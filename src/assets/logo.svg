@@ -1,0 +1,45 @@
+<svg viewBox="0 0 280 60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <!-- Default (Dark Mode) Gradients -->
+    <linearGradient id="neonGlow" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6200EA" class="grad-start" />
+      <stop offset="100%" stop-color="#00E5FF" class="grad-end" />
+    </linearGradient>
+    <style>
+      .text-main { fill: #FFFFFF; }
+      .text-sub { fill: #94A3B8; }
+      .dot { fill: #00E5FF; }
+
+      @media (prefers-color-scheme: light) {
+        .grad-start { stop-color: #1A237E; }
+        .grad-end { stop-color: #40C4FF; }
+        .text-main { fill: #0F172A; }
+        .text-sub { fill: #475569; }
+        .dot { fill: #40C4FF; }
+      }
+    </style>
+  </defs>
+
+  <!-- Abstract Icon: Book turning into a bird / Sparks of knowledge -->
+  <g transform="translate(5, 5)">
+    <!-- Left Wing/Page -->
+    <path d="M 25 35 C 15 25, 5 15, 0 5 C 10 10, 20 20, 25 30" stroke="url(#neonGlow)" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M 25 45 C 10 35, 0 25, -5 15 C 5 20, 15 30, 25 40" stroke="url(#neonGlow)" stroke-width="2.5" stroke-opacity="0.5" stroke-linecap="round"/>
+    
+    <!-- Right Wing/Page -->
+    <path d="M 25 35 C 35 25, 45 15, 50 5 C 40 10, 30 20, 25 30" stroke="url(#neonGlow)" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M 25 45 C 40 35, 50 25, 55 15 C 45 20, 35 30, 25 40" stroke="url(#neonGlow)" stroke-width="2.5" stroke-opacity="0.5" stroke-linecap="round"/>
+    
+    <!-- Central Spine/Core -->
+    <line x1="25" y1="20" x2="25" y2="45" stroke="url(#neonGlow)" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="25" cy="10" r="3" class="dot"/>
+  </g>
+
+  <!-- Typography -->
+  <text x="75" y="32" font-family="'Inter', 'Poppins', sans-serif" font-weight="900" font-size="22" letter-spacing="0.08em" class="text-main">
+    UNIVERSITY<tspan class="dot">.UZ</tspan>
+  </text>
+  <text x="77" y="48" font-family="'Inter', 'Poppins', sans-serif" font-weight="600" font-size="9" letter-spacing="0.25em" class="text-sub" text-transform="uppercase">
+    Premium Education Hub
+  </text>
+</svg>

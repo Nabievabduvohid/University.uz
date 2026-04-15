@@ -1,0 +1,244 @@
+import { Suspense, lazy, useEffect, useMemo, useRef } from 'react';
+import { gsap } from 'gsap';
+import { motion } from 'framer-motion';
+import { useLanguage } from '../context/LanguageContext';
+import { useTheme } from '../context/ThemeContext';
+
+const HeroScene = lazy(() => import('../components/HeroScene'));
+
+const containerVariant = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 1.1,
+    },
+  },
+};
+
+const itemVariant = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+export default function Hero() {
+  const heroRef = useRef(null);
+  const badgeRef = useRef(null);
+  const titleRefs = useRef([]);
+  const { t } = useLanguage();
+  const { isDark } = useTheme();
+  const heroTitle = t.hero.title;
+
+  const letters = useMemo(
+    () =>
+      heroTitle.split('').map((character, index) => ({
+        id: `${character}-${index}`,
+        value: character === ' ' ? '\u00A0' : character,
+      })),
+    [heroTitle],
+  );
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.set(titleRefs.current, { yPercent: 110, opacity: 0, rotateX: -90 });
+
+      const timeline = gsap.timeline({ defaults: { ease: 'power4.out' } });
+
+      timeline
+        .fromTo(
+          badgeRef.current,
+          { opacity: 0, y: 18 },
+          { opacity: 1, y: 0, duration: 0.7 },
+        )
+        .to(
+          titleRefs.current,
+          {
+            yPercent: 0,
+            opacity: 1,
+            rotateX: 0,
+            duration: 1,
+            stagger: 0.025,
+          },
+          '-=0.2',
+        );
+    }, heroRef);
+
+    return () => ctx.revert();
+  }, [heroTitle]);
+
+  return (
+    <section
+      id="home"
+      ref={heroRef}
+      className="relative isolate overflow-hidden px-6 pb-20 pt-32 sm:px-8 lg:px-12"
+    >
+      <div className="mx-auto grid min-h-[calc(100vh-5rem)] max-w-7xl items-center gap-14 lg:grid-cols-[1.1fr_0.9fr]">
+        <motion.div
+          variants={containerVariant}
+          initial="hidden"
+          animate="visible"
+          className="relative z-10 max-w-3xl"
+        >
+          <div
+            ref={badgeRef}
+            className="mb-8 inline-flex min-h-11 items-center gap-3 rounded-full border px-5 py-3 text-sm font-medium backdrop-blur-xl"
+            style={{
+              borderColor: 'var(--color-border)',
+              backgroundColor: 'var(--color-bg-elevated)',
+              color: 'var(--color-text-soft)',
+            }}
+          >
+            <span className="h-2.5 w-2.5 rounded-full bg-[#7bf7ff] shadow-[0_0_18px_rgba(123,247,255,0.9)]" />
+            {t.hero.badge}
+          </div>
+
+          <h1
+            className="max-w-4xl text-5xl font-semibold leading-[0.96] tracking-[-0.05em] sm:text-6xl lg:text-7xl xl:text-[5.5rem]"
+            style={{ color: 'var(--color-text)' }}
+          >
+            {letters.map((letter, index) => (
+              <span
+                key={letter.id}
+                ref={(element) => {
+                  titleRefs.current[index] = element;
+                }}
+                className="inline-block will-change-transform"
+              >
+                {letter.value}
+              </span>
+            ))}
+          </h1>
+
+          <motion.p
+            variants={itemVariant}
+            className="mt-8 max-w-2xl text-base leading-8 sm:text-lg"
+            style={{ color: 'var(--color-text-muted)' }}
+          >
+            {t.hero.description}
+          </motion.p>
+
+          <motion.div variants={itemVariant} className="mt-10 flex flex-col gap-4 sm:flex-row">
+            <a
+              href="#stats"
+              className="inline-flex min-h-14 items-center justify-center rounded-full bg-[linear-gradient(135deg,#79F7FF_0%,#2764FF_42%,#8B5CFF_100%)] px-7 text-sm font-semibold text-slate-950 shadow-[0_18px_60px_rgba(39,100,255,0.35)] transition duration-300 hover:scale-[1.02]"
+            >
+              {t.hero.primaryCta}
+            </a>
+            <a
+              href="#footer"
+              className="inline-flex min-h-14 items-center justify-center rounded-full border px-7 text-sm font-semibold backdrop-blur-xl transition duration-300 hover:border-[#79f7ff]/50"
+              style={{
+                borderColor: 'var(--color-border)',
+                backgroundColor: 'var(--color-bg-elevated)',
+                color: 'var(--color-text)',
+              }}
+            >
+              {t.hero.secondaryCta}
+            </a>
+          </motion.div>
+
+          <motion.div
+            variants={itemVariant}
+            className="mt-12 grid max-w-xl grid-cols-2 gap-4 sm:grid-cols-3"
+          >
+            {t.hero.highlights.map(([value, label]) => (
+              <div
+                key={label}
+                className="rounded-3xl border px-5 py-4 backdrop-blur-2xl"
+                style={{
+                  borderColor: 'var(--color-border)',
+                  backgroundColor: 'var(--color-bg-elevated)',
+                }}
+              >
+                <div className="text-2xl font-semibold" style={{ color: 'var(--color-text)' }}>
+                  {value}
+                </div>
+                <div className="mt-1 text-sm" style={{ color: 'var(--color-text-muted)' }}>
+                  {label}
+                </div>
+              </div>
+            ))}
+          </motion.div>
+        </motion.div>
+
+        <div className="relative z-10 mx-auto flex w-full max-w-[34rem] justify-center lg:justify-end">
+          <div
+            className="relative h-[28rem] w-full max-w-[30rem] rounded-[2rem] border p-3 backdrop-blur-2xl"
+            style={{
+              borderColor: 'var(--color-border)',
+              backgroundColor: 'var(--color-bg-elevated)',
+              boxShadow: isDark
+                ? '0 30px 120px rgba(0,0,0,0.35)'
+                : '0 30px 120px rgba(148,163,184,0.2)',
+            }}
+          >
+            <div className="absolute inset-x-8 top-6 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+            <div
+              className="relative h-full overflow-hidden rounded-[1.5rem] border"
+              style={{
+                borderColor: 'var(--color-border)',
+                background: isDark
+                  ? 'radial-gradient(circle at top, rgba(121,247,255,0.16), transparent 45%), linear-gradient(180deg, rgba(8,15,27,0.88), rgba(3,7,12,0.96))'
+                  : 'radial-gradient(circle at top, rgba(121,247,255,0.2), transparent 45%), linear-gradient(180deg, rgba(255,255,255,0.94), rgba(226,232,240,0.92))',
+              }}
+            >
+              <div
+                className="absolute left-6 right-6 top-6 z-20 flex items-center justify-between rounded-2xl border px-4 py-3 backdrop-blur-xl"
+                style={{
+                  borderColor: 'var(--color-border)',
+                  backgroundColor: isDark ? 'rgba(0,0,0,0.2)' : 'rgba(255,255,255,0.55)',
+                }}
+              >
+                <div>
+                  <p className="text-xs uppercase tracking-[0.28em]" style={{ color: 'var(--color-text-muted)' }}>
+                    {t.hero.liveRanking}
+                  </p>
+                  <p className="mt-1 text-sm font-medium" style={{ color: 'var(--color-text)' }}>
+                    {t.hero.topDestinations}
+                  </p>
+                </div>
+                <div className="rounded-full border border-emerald-400/30 bg-emerald-400/12 px-3 py-1 text-xs font-semibold text-emerald-200">
+                  {t.hero.realtime}
+                </div>
+              </div>
+
+              <div className="absolute inset-0">
+                <Suspense fallback={<div className="h-full w-full bg-transparent" />}>
+                  <HeroScene />
+                </Suspense>
+              </div>
+
+              <div className="absolute bottom-6 left-6 right-6 z-20 grid gap-3">
+                {t.hero.destinations.map(([city, track, score]) => (
+                  <div
+                    key={track}
+                    className="flex items-center justify-between rounded-2xl border px-4 py-3 backdrop-blur-xl"
+                    style={{
+                      borderColor: 'var(--color-border)',
+                      backgroundColor: 'var(--color-bg-elevated)',
+                    }}
+                  >
+                    <div>
+                      <p className="text-xs uppercase tracking-[0.24em]" style={{ color: 'var(--color-text-muted)' }}>
+                        {city}
+                      </p>
+                      <p className="mt-1 text-sm font-medium" style={{ color: 'var(--color-text)' }}>
+                        {track}
+                      </p>
+                    </div>
+                    <div className="text-sm font-semibold text-[#7bf7ff]">{score}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
