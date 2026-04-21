@@ -6,15 +6,17 @@ import Footer from '../components/Footer';
 import BackgroundGlow from '../components/BackgroundGlow';
 import { useCompare } from '../context/CompareContext';
 import universitiesData from '../data/universities';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function ComparePage() {
+  const { t } = useLanguage();
   const { compareList, removeFromCompare, clearCompare } = useCompare();
 
   const selectedUnis = compareList.map(id => universitiesData.find(u => u.id === id)).filter(Boolean);
 
   const checkDormitory = (uni) => {
     const stateUnis = ['tuit', 'tsue', 'tsul', 'samdu', 'buxdu', 'ferdu', 'namdu', 'jizpi', 'tspu'];
-    return stateUnis.includes(uni.id) ? "Bor (Davlat narxida)" : "Yo'q (Xususiy, yordamlashiladi)";
+    return stateUnis.includes(uni.id) ? t.compare.dormitoryYes : t.compare.dormitoryNo;
   };
 
   return (
@@ -27,8 +29,8 @@ export default function ComparePage() {
           <div className="max-w-7xl mx-auto">
             <div className="flex flex-col md:flex-row justify-between items-center mb-10 gap-4">
               <div>
-                <h1 className="text-4xl md:text-5xl font-black text-white mb-2">Solishtirish Markazi</h1>
-                <p className="text-gray-400 text-lg">Universitetlarning parametrlari boyicha eng mosini toping.</p>
+                <h1 className="text-4xl md:text-5xl font-black text-white mb-2">{t.compare.title}</h1>
+                <p className="text-gray-400 text-lg">{t.compare.desc}</p>
               </div>
               
               {selectedUnis.length > 0 && (
@@ -36,7 +38,7 @@ export default function ComparePage() {
                   onClick={clearCompare}
                   className="px-6 py-2 rounded-full border border-red-500/30 text-red-400 hover:bg-red-500/10 transition-colors font-medium text-sm"
                 >
-                  Hammasini tozalash
+                  {t.compare.clearAll}
                 </button>
               )}
             </div>
@@ -50,12 +52,12 @@ export default function ComparePage() {
                 <div className="w-24 h-24 mx-auto mb-6 bg-white/5 rounded-full flex items-center justify-center">
                   <svg className="w-12 h-12 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
                 </div>
-                <h2 className="text-2xl font-bold text-white mb-4">Hali hech qanday universitet tanlanmadi</h2>
+                <h2 className="text-2xl font-bold text-white mb-4">{t.compare.emptyTitle}</h2>
                 <p className="text-gray-400 mb-8 max-w-md mx-auto">
-                  Universitetlarni solishtirish uchun "Universitetlar" bo'limidan sizga yoqqanlarini tanlang. (Maksimal 3 ta).
+                  {t.compare.emptyDesc}
                 </p>
                 <Link to="/universities" className="px-8 py-3 rounded-full font-semibold bg-[#38bdf8] text-white hover:bg-blue-500 transition-colors">
-                  Katalogga o'tish
+                  {t.compare.goToCatalog}
                 </Link>
               </motion.div>
             ) : (
@@ -63,10 +65,10 @@ export default function ComparePage() {
                 <div className="min-w-[800px] grid grid-cols-4 gap-6">
                   {/* Left Parameter Column */}
                   <div className="col-span-1 pt-48 flex flex-col gap-6 text-right pr-6 border-r border-white/10">
-                    <div className="h-16 flex items-center justify-end font-semibold text-gray-400 uppercase tracking-widest text-xs">Yillik Kontrakt Narxi</div>
-                    <div className="h-24 flex items-center justify-end font-semibold text-gray-400 uppercase tracking-widest text-xs">Dunyo / Mahalliy Reyting</div>
-                    <div className="h-24 flex items-center justify-end font-semibold text-gray-400 uppercase tracking-widest text-xs">Fakultetlar Soni</div>
-                    <div className="h-16 flex items-center justify-end font-semibold text-gray-400 uppercase tracking-widest text-xs">Talabalar Yotoqxonasi</div>
+                    <div className="h-16 flex items-center justify-end font-semibold text-gray-400 uppercase tracking-widest text-xs">{t.compare.contract}</div>
+                    <div className="h-24 flex items-center justify-end font-semibold text-gray-400 uppercase tracking-widest text-xs">{t.compare.rating}</div>
+                    <div className="h-24 flex items-center justify-end font-semibold text-gray-400 uppercase tracking-widest text-xs">{t.compare.faculties}</div>
+                    <div className="h-16 flex items-center justify-end font-semibold text-gray-400 uppercase tracking-widest text-xs">{t.compare.dormitory}</div>
                   </div>
 
                   {/* University Columns */}
@@ -82,7 +84,7 @@ export default function ComparePage() {
                       <button 
                         onClick={() => removeFromCompare(uni.id)}
                         className="absolute top-4 right-4 z-10 p-2 bg-black/50 text-white hover:bg-red-500 hover:text-white rounded-full transition-all opacity-0 group-hover:opacity-100"
-                        title="Olib tashlash"
+                        title={t.compare.remove}
                       >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
                       </button>
@@ -109,15 +111,15 @@ export default function ComparePage() {
                             <span className="text-yellow-400 text-xl font-bold">★ {uni.rating}</span>
                             <span className="text-gray-500 text-sm">/10</span>
                           </div>
-                          <span className="text-gray-400 text-sm mt-1">{uni.rating > 8.5 ? 'Xalqaro toifa' : 'Milliy daraja'}</span>
+                          <span className="text-gray-400 text-sm mt-1">{uni.rating > 8.5 ? t.compare.international : t.compare.national}</span>
                         </div>
                       </div>
 
                       {/* Faculties */}
                       <div className="h-24 items-center flex border-b border-white/10">
                          <div className="flex flex-wrap gap-2">
-                           <span className="text-2xl font-bold text-white mr-2">{uni.faculties.length} ta</span>
-                           <span className="text-gray-400 text-sm leading-snug">Asosiy<br/>yo'nalish</span>
+                           <span className="text-2xl font-bold text-white mr-2">{uni.faculties.length} {t.compare.itemsCount}</span>
+                           <span className="text-gray-400 text-sm leading-snug">{t.compare.mainDirection}</span>
                          </div>
                       </div>
 
@@ -133,7 +135,7 @@ export default function ComparePage() {
                           to={`/university/${uni.id}`}
                           className="block w-full text-center py-3 bg-[#e81cff]/10 hover:bg-[#e81cff] text-[#e81cff] hover:text-white text-sm font-semibold rounded-xl border border-[#e81cff]/30 transition-all border-dashed hover:border-solid uppercase tracking-wider"
                         >
-                          Batafsil
+                          {t.compare.details}
                         </Link>
                       </div>
                     </motion.div>
@@ -145,8 +147,8 @@ export default function ComparePage() {
                       <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mb-4 text-white/20">
                         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" /></svg>
                       </div>
-                      <span className="text-gray-500 font-medium">Joy bo'sh</span>
-                      <Link to="/universities" className="text-sm text-[#38bdf8] mt-2 underline">Tanlash</Link>
+                      <span className="text-gray-500 font-medium">{t.compare.emptySlot}</span>
+                      <Link to="/universities" className="text-sm text-[#38bdf8] mt-2 underline">{t.compare.select}</Link>
                     </div>
                   ))}
 

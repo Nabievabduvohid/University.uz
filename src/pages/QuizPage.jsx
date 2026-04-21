@@ -6,8 +6,10 @@ import Footer from '../components/Footer';
 import BackgroundGlow from '../components/BackgroundGlow';
 import { quizzes } from '../data/quizzes';
 import universitiesData from '../data/universities';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function QuizPage() {
+  const { t } = useLanguage();
   const [activeQuiz, setActiveQuiz] = useState(null);
   const [currentQuestionIdx, setCurrentQuestionIdx] = useState(0);
   const [totalScore, setTotalScore] = useState(0);
@@ -55,10 +57,10 @@ export default function QuizPage() {
     <div className="max-w-6xl mx-auto">
       <div className="text-center mb-16">
         <h1 className="text-4xl md:text-6xl font-black tracking-tighter mb-4 text-white">
-          O'zingizni sinab ko'ring
+          {t.quiz.title}
         </h1>
         <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-          Quyidagi qiziqarli testlardan birini tanlang va o'zingizga eng mos keladigan ta'lim yo'nalishi va universitetlarni kashf eting. Har bir test 10 ta savoldan iborat.
+          {t.quiz.desc}
         </p>
       </div>
 
@@ -85,7 +87,7 @@ export default function QuizPage() {
             <p className="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">{quiz.description}</p>
             
             <div className="mt-auto mt-4 inline-flex items-center text-sm font-semibold group-hover:gap-2 transition-all" style={{ color: quiz.color }}>
-              Testni boshlash (10 savol)
+              {t.quiz.startTest}
               <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </div>
           </motion.div>
@@ -155,7 +157,7 @@ export default function QuizPage() {
         </AnimatePresence>
 
         <button onClick={resetQuiz} className="mt-8 text-sm text-gray-500 hover:text-white mx-auto block transition-colors">
-          Asosiy menuga qaytish
+          {t.quiz.backToMenu}
         </button>
       </div>
     );
@@ -173,11 +175,11 @@ export default function QuizPage() {
            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-[#e81cff]/20 rounded-full blur-[80px] pointer-events-none"></div>
 
           <div className="inline-block text-6xl mb-6 animate-bounce relative z-10">🎉</div>
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 relative z-10">Test Natijalari</h2>
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 relative z-10">{t.quiz.resultsTitle}</h2>
           
           <div className="flex flex-col items-center justify-center gap-4 mb-8">
             <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl px-6 py-4">
-              <span className="text-gray-400 text-sm uppercase tracking-widest font-bold">Umumiy Ball:</span>
+              <span className="text-gray-400 text-sm uppercase tracking-widest font-bold">{t.quiz.totalScore}</span>
               <div className="text-4xl font-black text-[#38bdf8] mt-1">{quizResult.finalScore} <span className="text-xl text-gray-500">/ {quizResult.maxScore}</span></div>
             </div>
           </div>
@@ -189,7 +191,7 @@ export default function QuizPage() {
 
         <div className="mb-12">
           <div className="flex items-center gap-4 mb-8">
-            <h3 className="text-2xl font-semibold text-white">Siz uchun maxsus tavsiyalar:</h3>
+            <h3 className="text-2xl font-semibold text-white">{t.quiz.recommendations}</h3>
             <div className="h-[1px] flex-grow bg-white/10"></div>
           </div>
           
@@ -219,14 +221,14 @@ export default function QuizPage() {
                     to={`/university/${uni.id}`}
                     className="mt-auto w-full text-center py-2 bg-white/10 hover:bg-[#38bdf8] text-sm text-white font-semibold rounded-xl transition-colors border border-white/5"
                   >
-                    Batafsil
+                    {t.quiz.details}
                   </Link>
                 </div>
               </motion.div>
             ))}
             {quizResult.recommendations.length === 0 && (
               <div className="col-span-full text-center py-10 bg-white/5 rounded-2xl border border-white/10">
-                <p className="text-gray-400">Hech qanday universitet topilmadi.</p>
+                <p className="text-gray-400">{t.quiz.noUniversities}</p>
               </div>
             )}
           </div>
@@ -237,13 +239,13 @@ export default function QuizPage() {
             onClick={resetQuiz}
             className="px-8 py-3 rounded-full font-semibold border-2 border-white/20 text-white hover:bg-white/10 transition-all w-full sm:w-auto"
           >
-            Boshqa test topshirish
+            {t.quiz.retake}
           </button>
           <Link 
             to="/profile"
             className="px-8 py-3 rounded-full font-semibold bg-gradient-to-r from-[#e81cff] to-[#a855f7] text-white hover:shadow-[0_0_20px_rgba(232,28,255,0.5)] transition-all w-full sm:w-auto text-center"
           >
-            Natijani Profilga saqlash
+            {t.quiz.saveResult}
           </Link>
         </div>
       </motion.div>

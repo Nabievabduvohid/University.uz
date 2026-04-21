@@ -16,9 +16,9 @@ export default function Navbar() {
   const navItems = [
     { label: t.navbar.home, href: '/' },
     { label: t.navbar.universities, href: '/universities' },
-    { label: t.navbar.about || "Biz haqimizda", href: '/about' },
-    { label: t.navbar.quiz || "Test topshirish", href: '/quiz' },
-    { label: "Kalkulyator", href: '/calculator' },
+    { label: t.navbar.about, href: '/about' },
+    { label: t.navbar.quiz, href: '/quiz' },
+    { label: t.navbar.calculator, href: '/calculator' },
   ];
 
   return (
@@ -36,7 +36,7 @@ export default function Navbar() {
             : '0 20px 60px rgba(148, 163, 184, 0.18)',
         }}
       >
-        <Link to="/" className="flex items-center group">
+        <Link to="/" className="flex flex-shrink-0 items-center group">
           <svg viewBox="0 0 280 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-10 w-auto">
             <defs>
               {/* Theme-based Gradient */}
@@ -109,7 +109,7 @@ export default function Navbar() {
               className="hidden sm:flex items-center gap-2 rounded-full border border-[#38bdf8]/30 bg-[#38bdf8]/10 px-4 py-2 min-h-11 text-xs font-semibold text-[#38bdf8] transition-all hover:bg-[#38bdf8]/20 mr-1"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
-              Solishtirish ({compareList.length})
+              {t.navbar.compare} ({compareList.length})
             </Link>
           )}
           
@@ -167,13 +167,13 @@ export default function Navbar() {
                 className="min-h-11 flex items-center rounded-full px-4 text-sm font-medium transition duration-300 hover:text-[#38bdf8]"
                 style={{ color: 'var(--color-text-soft)' }}
               >
-                Kirish
+                {t.navbar.login}
               </Link>
               <Link
                 to="/register"
                 className="min-h-11 flex items-center rounded-full border border-[#7bf7ff]/35 bg-[#7bf7ff]/10 px-5 text-sm font-semibold text-[#0f172a] transition duration-300 hover:border-[#7bf7ff]/70 hover:bg-[#7bf7ff]/15 dark:text-white"
               >
-                Ro'yxatdan o'tish
+                {t.navbar.register}
               </Link>
             </div>
           )}

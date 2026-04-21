@@ -3,8 +3,11 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import UniversityCard from '../components/cards/UniversityCard';
 import universities from '../data/universities';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function TopUniversities() {
+  const { t } = useLanguage();
+
   // Sort by rating descending and take top 5
   const topUniversities = [...universities]
     .sort((a, b) => b.rating - a.rating)
@@ -24,7 +27,7 @@ export default function TopUniversities() {
               viewport={{ once: true }}
               className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4"
             >
-              Top 5 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#38bdf8] to-[#818cf8]">Universitetlar</span>
+              {t.topUniversities.title1} <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#38bdf8] to-[#818cf8]">{t.topUniversities.title2}</span>
             </motion.h2>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
@@ -33,7 +36,7 @@ export default function TopUniversities() {
               transition={{ delay: 0.1 }}
               className="text-gray-400 max-w-2xl text-lg"
             >
-              Talabalar tomonidan eng yuqori baholangan, ta'lim sifati va sharoitlari bilan ajralib turadigan yetakchi oliygohlar.
+              {t.topUniversities.desc}
             </motion.p>
           </div>
         </div>
@@ -67,7 +70,7 @@ export default function TopUniversities() {
                 {/* Hover Batafsil overlay (optional enhancement, since cards might just be clickable) */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-[var(--card-radius,_1.5rem)] flex items-end p-6 z-10">
                   <span className="text-[#38bdf8] font-medium flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
-                    Batafsil ma'lumot 
+                    {t.topUniversities.moreInfo} 
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                   </span>
                 </div>
@@ -91,7 +94,7 @@ export default function TopUniversities() {
             <span className="absolute inset-0 w-full h-full border-2 border-transparent rounded-full shadow-[0_0_20px_rgba(56,189,248,0.5)] group-hover:shadow-[0_0_40px_rgba(56,189,248,0.8)] transition-shadow duration-300"></span>
             
             <span className="relative z-10 flex items-center gap-2">
-              Barcha universitetlarni ko'rish
+              {t.topUniversities.viewAll}
               <svg className="w-5 h-5 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>

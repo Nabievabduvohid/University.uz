@@ -7,8 +7,10 @@ import BackgroundGlow from '../components/BackgroundGlow';
 import { salaryData, englishLevels, additionalSkills } from '../data/salaryData';
 import universitiesData from '../data/universities';
 import UniversityCard from '../components/cards/UniversityCard';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function SalaryCalculator() {
+  const { t } = useLanguage();
   const [field, setField] = useState(salaryData[0].id);
   const [experience, setExperience] = useState('junior'); // 'junior' or 'senior'
   const [englishLevel, setEnglishLevel] = useState(englishLevels[0].id);
@@ -60,9 +62,9 @@ export default function SalaryCalculator() {
 
         <main className="flex-grow pt-32 pb-24 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto w-full">
           <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-black text-white mb-4">Kasbiy Maosh Kalkulyatori</h1>
+            <h1 className="text-4xl md:text-5xl font-black text-white mb-4">{t.calculator.title}</h1>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              Siz tanlagan yo'nalish, til bilish darajasi va tajriba kabi omillarga asoslanib kelajakdagi o'rtacha potentsial daromadingizni kashf qiling.
+              {t.calculator.desc}
             </p>
           </div>
 
@@ -71,7 +73,7 @@ export default function SalaryCalculator() {
             <div className="lg:col-span-5 space-y-8 bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-2xl">
               
               <div>
-                <label className="block text-sm font-semibold text-gray-300 mb-3 uppercase tracking-wider">Yo'nalishni tanlang</label>
+                <label className="block text-sm font-semibold text-gray-300 mb-3 uppercase tracking-wider">{t.calculator.selectField}</label>
                 <select 
                   value={field}
                   onChange={e => setField(e.target.value)}
@@ -84,7 +86,7 @@ export default function SalaryCalculator() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-300 mb-3 uppercase tracking-wider">Tajriba darajasi</label>
+                <label className="block text-sm font-semibold text-gray-300 mb-3 uppercase tracking-wider">{t.calculator.experience}</label>
                 <div className="flex bg-black/40 border border-white/10 rounded-xl p-1 relative">
                   <motion.div 
                     layout
@@ -97,19 +99,19 @@ export default function SalaryCalculator() {
                     onClick={() => setExperience('junior')}
                     className={`flex-1 py-3 text-sm font-semibold z-10 transition-colors ${experience === 'junior' ? 'text-white' : 'text-gray-500 hover:text-white'}`}
                   >
-                    Boshlang'ich (Junior 0-2 yil)
+                    {t.calculator.junior}
                   </button>
                   <button 
                     onClick={() => setExperience('senior')}
                     className={`flex-1 py-3 text-sm font-semibold z-10 transition-colors ${experience === 'senior' ? 'text-white' : 'text-gray-500 hover:text-white'}`}
                   >
-                    Tajribali (Middle/Senior 5+ yil)
+                    {t.calculator.senior}
                   </button>
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-300 mb-3 uppercase tracking-wider">Ingliz tili darajasi</label>
+                <label className="block text-sm font-semibold text-gray-300 mb-3 uppercase tracking-wider">{t.calculator.englishLabel}</label>
                 <select 
                   value={englishLevel}
                   onChange={e => setEnglishLevel(e.target.value)}
@@ -122,7 +124,7 @@ export default function SalaryCalculator() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-300 mb-3 uppercase tracking-wider">Qo'shimcha Ko'nikmalar</label>
+                <label className="block text-sm font-semibold text-gray-300 mb-3 uppercase tracking-wider">{t.calculator.additionalSkills}</label>
                 <div className="space-y-3">
                   {additionalSkills.map(skill => (
                     <label key={skill.id} className="flex items-center gap-4 cursor-pointer group p-3 bg-white/5 border border-white/5 rounded-xl hover:bg-white/10 transition-colors">
@@ -146,21 +148,21 @@ export default function SalaryCalculator() {
                <div className="absolute top-[-50px] right-[-50px] w-64 h-64 bg-[#e81cff]/20 rounded-full blur-[80px]"></div>
                <div className="absolute bottom-[-50px] left-[-50px] w-64 h-64 bg-[#38bdf8]/20 rounded-full blur-[80px]"></div>
 
-               <h2 className="text-xl text-gray-400 font-semibold mb-2 relative z-10">Sizning potensial daromadingiz:</h2>
+               <h2 className="text-xl text-gray-400 font-semibold mb-2 relative z-10">{t.calculator.potentialIncome}</h2>
                
                {/* Animated Counter Display */}
                <div className="flex items-end gap-2 mb-10 relative z-10">
                  <div className="text-5xl sm:text-6xl md:text-7xl font-black bg-clip-text text-transparent bg-gradient-to-r from-[#38bdf8] via-[#8b5cf6] to-[#e81cff] drop-shadow-lg">
                     {projectedRange[0]} - {projectedRange[1]}
                  </div>
-                 <span className="text-2xl text-gray-400 font-bold mb-2">mln / oy</span>
+                 <span className="text-2xl text-gray-400 font-bold mb-2">{t.calculator.perMonth}</span>
                </div>
 
                {/* Gauge / Bar display */}
                <div className="w-full max-w-lg mb-8 relative z-10">
                  <div className="flex justify-between text-xs text-gray-500 font-bold mb-2 uppercase tracking-widest">
-                   <span>0 mln</span>
-                   <span>Maksimal Sektor</span>
+                   <span>{t.calculator.zeroMln}</span>
+                   <span>{t.calculator.maxSector}</span>
                  </div>
                  <div className="h-6 bg-black/50 border border-white/10 rounded-full overflow-hidden shadow-inner p-1 relative">
                     {/* Animated Bar */}
@@ -179,7 +181,7 @@ export default function SalaryCalculator() {
                     </motion.div>
                  </div>
                  <div className="mt-4 text-center px-4">
-                    <p className="text-sm text-gray-400 font-medium">Ushbu qiymatlar O'zbekiston mehnat bozori, top kompaniyalar va xalqaro frilans daromadlari tahlili asosida generatsiya qilindi.</p>
+                    <p className="text-sm text-gray-400 font-medium">{t.calculator.disclaimer}</p>
                  </div>
                </div>
             </div>
@@ -188,8 +190,8 @@ export default function SalaryCalculator() {
           {/* Recommended Universities */}
           <div className="mt-20">
             <div className="text-center mb-10">
-              <h2 className="text-3xl font-bold text-white mb-3">Ushbu maoshga erishish uchun...</h2>
-              <p className="text-gray-400 max-w-2xl mx-auto">Soha kelajagi porloq. Daromadingizni maksimal darajaga olib chiqish uchun quyidagi nufuzli oliygohlarning tegishli fakultetlariga topshirishni rejalashtiring.</p>
+              <h2 className="text-3xl font-bold text-white mb-3">{t.calculator.recommendationsTitle}</h2>
+              <p className="text-gray-400 max-w-2xl mx-auto">{t.calculator.recommendationsDesc}</p>
             </div>
             
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
@@ -216,7 +218,7 @@ export default function SalaryCalculator() {
             </div>
             {matchedUnis.length === 0 && (
               <div className="text-center p-10 bg-white/5 border border-white/10 rounded-2xl">
-                 Xato: Ushbu soha bo'yicha maxsus muassasa topilmadi.
+                 {t.calculator.notFound}
               </div>
             )}
           </div>
