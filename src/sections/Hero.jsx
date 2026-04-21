@@ -82,12 +82,12 @@ export default function Hero() {
       ref={heroRef}
       className="relative isolate overflow-hidden px-6 pb-20 pt-32 sm:px-8 lg:px-12"
     >
-      <div className="mx-auto grid min-h-[calc(100vh-5rem)] max-w-7xl items-center gap-14 lg:grid-cols-2 lg:gap-16">
+      <div className="mx-auto flex min-h-[calc(100vh-5rem)] max-w-7xl flex-col items-center justify-between gap-14 lg:flex-row lg:gap-16">
         <motion.div
           variants={containerVariant}
           initial="hidden"
           animate="visible"
-          className="relative z-20 max-w-3xl lg:max-w-[60%]"
+          className="relative z-20 w-full max-w-[500px] lg:max-w-[50%]"
         >
           <div
             ref={badgeRef}
@@ -103,8 +103,8 @@ export default function Hero() {
           </div>
 
           <h1
-            className="max-w-full whitespace-normal break-keep text-4xl font-semibold leading-tight tracking-[-0.05em] md:text-5xl lg:max-w-[60%] lg:text-6xl"
-            style={{ color: 'var(--color-text)' }}
+            className="max-w-full whitespace-normal break-keep text-2xl font-semibold leading-[1.1] tracking-[-0.05em] [overflow-wrap:normal] sm:text-4xl lg:text-5xl"
+            style={{ color: 'var(--color-text)', wordBreak: 'keep-all', overflowWrap: 'normal' }}
           >
             {words.map((word) => (
               <span
@@ -130,7 +130,7 @@ export default function Hero() {
 
           <motion.p
             variants={itemVariant}
-            className="mt-8 max-w-2xl text-base leading-8 sm:text-lg"
+            className="mt-6 max-w-xl text-sm leading-6 sm:text-base"
             style={{ color: 'var(--color-text-muted)' }}
           >
             {t.hero.description}
@@ -138,17 +138,17 @@ export default function Hero() {
 
           <motion.div
             variants={itemVariant}
-            className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap"
+            className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap"
           >
             <a
               href="#stats"
-              className="inline-flex min-h-14 items-center justify-center rounded-full bg-[linear-gradient(135deg,#79F7FF_0%,#2764FF_42%,#8B5CFF_100%)] px-7 text-sm font-semibold text-slate-950 shadow-[0_18px_60px_rgba(39,100,255,0.35)] transition duration-300 hover:scale-[1.02]"
+              className="inline-flex min-h-12 items-center justify-center rounded-full bg-[linear-gradient(135deg,#79F7FF_0%,#2764FF_42%,#8B5CFF_100%)] px-5 text-sm font-semibold text-slate-950 shadow-[0_18px_60px_rgba(39,100,255,0.35)] transition duration-300 hover:scale-[1.02]"
             >
               {t.hero.primaryCta}
             </a>
             <a
               href="#footer"
-              className="inline-flex min-h-14 items-center justify-center rounded-full border px-7 text-sm font-semibold backdrop-blur-xl transition duration-300 hover:border-[#79f7ff]/50"
+              className="inline-flex min-h-12 items-center justify-center rounded-full border px-5 text-sm font-semibold backdrop-blur-xl transition duration-300 hover:border-[#79f7ff]/50"
               style={{
                 borderColor: 'var(--color-border)',
                 backgroundColor: 'var(--color-bg-elevated)',
@@ -183,7 +183,7 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        <div className="relative z-10 order-last mx-auto hidden w-full max-w-[34rem] justify-center lg:order-none lg:flex lg:justify-end">
+        <div className="relative z-10 order-last mx-auto hidden w-full max-w-[34rem] flex-shrink-0 justify-center lg:order-none lg:flex lg:justify-end">
           <div
             className="relative z-10 mt-4 h-[28rem] w-full max-w-[30rem] rounded-[2rem] border p-3 backdrop-blur-2xl lg:mt-0"
             style={{
