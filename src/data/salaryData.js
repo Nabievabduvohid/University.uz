@@ -1,51 +1,121 @@
 export const salaryData = [
   {
     id: "it",
-    name: "IT va Dasturlash (Web, AI, Kiberxavfsizlik)",
-    baseSalary: [6, 12], // Junior (mln so'm)
-    seniorSalary: [25, 60], // 5 yil+ (mln so'm)
+    names: {
+      uz: "IT va Dasturlash (Web, AI, Kiberxavfsizlik)",
+      ru: "IT и разработка (Web, AI, кибербезопасность)",
+    },
+    multiplier: 1,
     matchedUnis: ["inha", "tuit", "amity", "turin", "newuu"]
   },
   {
     id: "finance",
-    name: "Iqtisodiyot va Moliya (Banka, Audit)",
-    baseSalary: [4, 8],
-    seniorSalary: [15, 35],
+    names: {
+      uz: "Iqtisodiyot va Moliya (Bank, Audit)",
+      ru: "Экономика и финансы (банк, аудит)",
+    },
+    multiplier: 0.82,
     matchedUnis: ["wiut", "tsue", "mdis", "samdu"]
   },
   {
     id: "medicine",
-    name: "Tibbiyot (Davlat va Xususiy klinikalar)",
-    baseSalary: [3, 6],
-    seniorSalary: [12, 40],
+    names: {
+      uz: "Tibbiyot (Davlat va xususiy klinikalar)",
+      ru: "Медицина (государственные и частные клиники)",
+    },
+    multiplier: 0.9,
     matchedUnis: ["akfa", "samdu"] // If more medical unis existed, they'd go here
   },
   {
     id: "education",
-    name: "Ta'lim va Pedagogika (Maktab, Universitet)",
-    baseSalary: [3.5, 7],
-    seniorSalary: [8, 15],
+    names: {
+      uz: "Ta'lim va Pedagogika (Maktab, universitet)",
+      ru: "Образование и педагогика (школа, университет)",
+    },
+    multiplier: 0.58,
     matchedUnis: ["tspu", "samdu", "namdu", "buxdu", "ferdu"]
   },
   {
     id: "law",
-    name: "Huquqshunoslik va Yuridik soha",
-    baseSalary: [4, 7],
-    seniorSalary: [18, 50],
+    names: {
+      uz: "Huquqshunoslik va yuridik soha",
+      ru: "Юриспруденция и правовая сфера",
+    },
+    multiplier: 0.86,
     matchedUnis: ["tsul", "wiut", "jizpi"]
   }
 ];
 
 export const englishLevels = [
-  { id: "none", label: "Hali yo'q / Boshlang'ich", multiplier: 1.0 },
-  { id: "b1", label: "CEFR B1 / IELTS 5.0", multiplier: 1.15 },
-  { id: "b2", label: "CEFR B2 / IELTS 6.0", multiplier: 1.35 },
-  { id: "c1", label: "CEFR C1 / IELTS 7.0+", multiplier: 1.6 },
+  {
+    id: "none",
+    labels: {
+      uz: "Hali yo'q / Boshlang'ich",
+      ru: "Пока нет / Начальный уровень",
+    },
+    multiplier: 1,
+  },
+  {
+    id: "b1",
+    labels: {
+      uz: "CEFR B1 / IELTS 5.0",
+      ru: "CEFR B1 / IELTS 5.0",
+    },
+    multiplier: 1.08,
+  },
+  {
+    id: "b2",
+    labels: {
+      uz: "CEFR B2 / IELTS 6.0",
+      ru: "CEFR B2 / IELTS 6.0",
+    },
+    multiplier: 1.18,
+  },
+  {
+    id: "c1",
+    labels: {
+      uz: "CEFR C1 / IELTS 7.0+",
+      ru: "CEFR C1 / IELTS 7.0+",
+    },
+    multiplier: 1.3,
+  },
 ];
 
 export const additionalSkills = [
-  { id: "soft", label: "Soft Skills (Muloqot, taqdimot qilish)", bonus: 1.1 },
-  { id: "team", label: "Jamoaviy ishlash (Teamwork)", bonus: 1.05 },
-  { id: "leadership", label: "Yetakchilik va menejment", bonus: 1.2 },
-  { id: "tech", label: "Qo'shimcha texnik sertifikatlar", bonus: 1.15 },
+  {
+    id: "soft",
+    labels: {
+      uz: "Soft skills (muloqot, taqdimot)",
+      ru: "Soft skills (коммуникация, презентация)",
+    },
+    percentBonus: 0.08,
+    flatBonus: 0,
+  },
+  {
+    id: "team",
+    labels: {
+      uz: "Jamoaviy ishlash",
+      ru: "Командная работа",
+    },
+    percentBonus: 0.05,
+    flatBonus: 0,
+  },
+  {
+    id: "leadership",
+    labels: {
+      uz: "Yetakchilik va menejment",
+      ru: "Лидерство и менеджмент",
+    },
+    percentBonus: 0.12,
+    flatBonus: 150,
+  },
+  {
+    id: "tech",
+    labels: {
+      uz: "Qo'shimcha texnik sertifikatlar",
+      ru: "Дополнительные технические сертификаты",
+    },
+    percentBonus: 0.1,
+    flatBonus: 120,
+  },
 ];
