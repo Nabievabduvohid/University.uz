@@ -82,12 +82,12 @@ export default function Hero() {
       ref={heroRef}
       className="relative isolate overflow-hidden px-6 pb-20 pt-32 sm:px-8 lg:px-12"
     >
-      <div className="mx-auto grid min-h-[calc(100vh-5rem)] max-w-7xl items-center gap-14 lg:grid-cols-[1.1fr_0.9fr]">
+      <div className="mx-auto grid min-h-[calc(100vh-5rem)] max-w-7xl items-center gap-14 lg:grid-cols-2 lg:gap-16">
         <motion.div
           variants={containerVariant}
           initial="hidden"
           animate="visible"
-          className="relative z-10 max-w-3xl"
+          className="relative z-20 max-w-3xl lg:max-w-[60%]"
         >
           <div
             ref={badgeRef}
@@ -103,7 +103,7 @@ export default function Hero() {
           </div>
 
           <h1
-            className="max-w-[16ch] break-keep text-[clamp(2.85rem,10vw,4.65rem)] font-semibold leading-[0.98] tracking-[-0.05em] sm:max-w-[18ch] sm:text-[clamp(3.4rem,8vw,5.3rem)] md:max-w-[20ch] lg:max-w-[22ch] lg:whitespace-nowrap lg:text-[clamp(4.2rem,5.6vw,6.3rem)]"
+            className="max-w-full whitespace-normal break-keep text-4xl font-semibold leading-tight tracking-[-0.05em] md:text-5xl lg:max-w-[60%] lg:text-6xl"
             style={{ color: 'var(--color-text)' }}
           >
             {words.map((word) => (
@@ -136,7 +136,10 @@ export default function Hero() {
             {t.hero.description}
           </motion.p>
 
-          <motion.div variants={itemVariant} className="mt-10 flex flex-col gap-4 sm:flex-row">
+          <motion.div
+            variants={itemVariant}
+            className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap"
+          >
             <a
               href="#stats"
               className="inline-flex min-h-14 items-center justify-center rounded-full bg-[linear-gradient(135deg,#79F7FF_0%,#2764FF_42%,#8B5CFF_100%)] px-7 text-sm font-semibold text-slate-950 shadow-[0_18px_60px_rgba(39,100,255,0.35)] transition duration-300 hover:scale-[1.02]"
@@ -180,9 +183,9 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        <div className="relative z-10 mx-auto flex w-full max-w-[34rem] justify-center lg:justify-end">
+        <div className="relative z-10 order-last mx-auto hidden w-full max-w-[34rem] justify-center lg:order-none lg:flex lg:justify-end">
           <div
-            className="relative h-[28rem] w-full max-w-[30rem] rounded-[2rem] border p-3 backdrop-blur-2xl"
+            className="relative z-10 mt-4 h-[28rem] w-full max-w-[30rem] rounded-[2rem] border p-3 backdrop-blur-2xl lg:mt-0"
             style={{
               borderColor: 'var(--color-border)',
               backgroundColor: 'var(--color-bg-elevated)',
