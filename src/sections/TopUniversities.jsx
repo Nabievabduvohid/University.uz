@@ -53,10 +53,14 @@ export default function TopUniversities() {
             >
               <Link to={`/university/${uni.id}`} className="block h-full relative">
                 <UniversityCard
+                  universityId={uni.id}
                   title={uni.name}
                   location={uni.location}
                   image={uni.images[0]}
+                  description={uni.fullDescription}
                   tags={uni.faculties.slice(0, 3)}
+                  contractYear={uni.contract_year}
+                  contractMonth={uni.contract_month}
                 />
                 
                 {/* Rating Badge */}

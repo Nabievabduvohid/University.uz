@@ -9,6 +9,7 @@ import universitiesData from '../data/universities';
 export default function ProfilePage() {
   const { user, logout, loading } = useAuth();
   const [docProgress, setDocProgress] = useState([]);
+  const [savedUniversities, setSavedUniversities] = useState([]);
 
   useEffect(() => {
     const docsArr = [];
@@ -28,6 +29,17 @@ export default function ProfilePage() {
         }
     }
     setDocProgress(docsArr);
+
+    try {
+      const savedIds = JSON.parse(localStorage.getItem('university_saved_list') || '[]');
+      if (Array.isArray(savedIds)) {
+        setSavedUniversities(
+          savedIds.map((id) => universitiesData.find((uni) => uni.id === id)).filter(Boolean),
+        );
+      }
+    } catch {
+      setSavedUniversities([]);
+    }
   }, []);
 
   if (loading) return null;
@@ -89,13 +101,20 @@ export default function ProfilePage() {
               Tanlanganlar (Favorites)
             </h2>
             
-            {user.favorites && user.favorites.length > 0 ? (
+            {savedUniversities.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {/* Dynamically render user.favorites logic here */}
-                {user.favorites.map((fav, index) => (
-                  <div key={index} className="p-4 rounded-xl bg-white/5 border border-white/10">
-                    <h3 className="text-lg font-medium">{fav.name || 'University'}</h3>
-                  </div>
+                {savedUniversities.map((fav) => (
+                  <Link
+                    key={fav.id}
+                    to={`/university/${fav.id}`}
+                    className="p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-[#38bdf8]/50 transition-all group"
+                  >
+                    <div className="aspect-video w-full overflow-hidden rounded-xl">
+                      <img src={fav.images[0]} alt={fav.name} className="h-full w-full object-cover" />
+                    </div>
+                    <h3 className="mt-4 text-lg font-medium group-hover:text-[#38bdf8] transition-colors">{fav.name}</h3>
+                    <p className="mt-2 text-sm text-gray-400">{fav.tuitionFee}</p>
+                  </Link>
                 ))}
               </div>
             ) : (

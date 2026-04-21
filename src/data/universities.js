@@ -1,20 +1,30 @@
+export const formatUzCurrency = (amount) =>
+  `${new Intl.NumberFormat('uz-UZ').format(amount)} UZS`;
+
+const withPricing = (university) => ({
+  ...university,
+  contract_month: Math.round(university.contract_year / 10),
+  tuitionFee: `${formatUzCurrency(university.contract_year)} / yil`,
+});
+
 const universities = [
   {
     id: 'tuit',
     rating: 4.8,
     name: 'Toshkent Axborot Texnologiyalari Universiteti',
     fullDescription:
-      'Toshkent Axborot Texnologiyalari Universiteti O‘zbekistonning AKT sohasi bo‘yicha eng muhim tayanch oliygohlaridan biri hisoblanadi. Universitet dasturiy injiniring, kiberxavfsizlik, telekommunikatsiya va sun’iy intellekt yo‘nalishlarida bozor talabiga mos mutaxassislar tayyorlaydi. Talabalar zamonaviy laboratoriyalar, texnopark tashabbuslari va sanoat hamkorliklari orqali amaliy tajriba orttiradi.',
+      "Toshkent Axborot Texnologiyalari Universiteti O'zbekistonning AKT sohasi bo'yicha eng muhim tayanch oliygohlaridan biri hisoblanadi. Universitet dasturiy injiniring, kiberxavfsizlik, telekommunikatsiya va sun'iy intellekt yo'nalishlarida bozor talabiga mos mutaxassislar tayyorlaydi.",
     faculties: [
       'Dasturiy injiniring',
       'Kiberxavfsizlik',
       'Telekommunikatsiya texnologiyalari',
-      'Sun’iy intellekt va data science',
+      "Sun'iy intellekt va data science",
       'Kompyuter injiniringi',
     ],
-    tuitionFee: "28 000 000 so'm / yil",
-    location: 'Toshkent shahri, Amir Temur shoh ko‘chasi 108',
+    contract_year: 28900000,
+    location: "Toshkent shahri, Amir Temur shoh ko'chasi 108",
     website: 'https://tuit.uz',
+    real_images: ['https://tuit.uz/en/post/oliygohimizning-a-binosida-kitob-yarmarkasi-bolib-otmoqda'],
     images: [
       'https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1600&q=80',
       'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1600&q=80',
@@ -26,16 +36,17 @@ const universities = [
     rating: 4.9,
     name: 'INHA University in Tashkent',
     fullDescription:
-      'INHA University in Tashkent Janubiy Koreya ta’lim modeli asosida qurilgan xalqaro universitet bo‘lib, IT va biznes yo‘nalishlarida kuchli akademik muhit taklif etadi. Darslar ingliz tilida olib boriladi, loyiha asosidagi ta’lim usuli esa talabalarni global mehnat bozori uchun tayyorlaydi. Universitet xalqaro almashinuv dasturlari va korporativ hamkorliklari bilan ajralib turadi.',
+      "INHA University in Tashkent Janubiy Koreya ta'lim modeli asosida qurilgan xalqaro universitet bo'lib, IT va biznes yo'nalishlarida kuchli akademik muhit taklif etadi. Darslar ingliz tilida olib boriladi va loyiha asosidagi ta'lim usuli talabalarni global mehnat bozori uchun tayyorlaydi.",
     faculties: [
       'Computer and Software Engineering',
       'Data Science',
       'Logistics',
       'Business Administration',
     ],
-    tuitionFee: "67 000 000 so'm / yil",
-    location: 'Toshkent shahri, Ziyolilar ko‘chasi 9',
+    contract_year: 40400000,
+    location: "Toshkent shahri, Ziyolilar ko'chasi 9",
     website: 'https://inha.uz',
+    real_images: ['https://inha.uz/about/introduction/'],
     images: [
       'https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&w=1600&q=80',
       'https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?auto=format&fit=crop&w=1600&q=80',
@@ -47,7 +58,7 @@ const universities = [
     rating: 4.7,
     name: 'Westminster International University in Tashkent',
     fullDescription:
-      'Westminster International University in Tashkent Buyuk Britaniya akademik standartlari asosida faoliyat yuritadi. Universitet iqtisodiyot, moliya, biznes boshqaruvi va kompyuter fanlari bo‘yicha kuchli dasturlarga ega. Tanqidiy fikrlash, tadqiqot ko‘nikmalari va xalqaro kommunikatsiya WIUT ta’limining asosiy ustunlaridan biridir.',
+      "Westminster International University in Tashkent Buyuk Britaniya akademik standartlari asosida faoliyat yuritadi. Universitet iqtisodiyot, moliya, biznes boshqaruvi va kompyuter fanlari bo'yicha kuchli dasturlarga ega. Tanqidiy fikrlash va xalqaro kommunikatsiya WIUT ta'limining asosiy ustunlaridan biridir.",
     faculties: [
       'Economics',
       'Finance',
@@ -55,9 +66,10 @@ const universities = [
       'Business Information Systems',
       'Management',
     ],
-    tuitionFee: "76 000 000 so'm / yil",
-    location: 'Toshkent shahri, Istiqbol ko‘chasi 12',
+    contract_year: 38820000,
+    location: "Toshkent shahri, Istiqbol ko'chasi 12",
     website: 'https://wiut.uz',
+    real_images: ['https://www.wiut.uz/index.php/our-university'],
     images: [
       'https://images.unsplash.com/photo-1565035010268-a3816f98589a?auto=format&fit=crop&w=1600&q=80',
       'https://images.unsplash.com/photo-1544531586-fde5298cdd40?auto=format&fit=crop&w=1600&q=80',
@@ -69,7 +81,7 @@ const universities = [
     rating: 4.6,
     name: 'MDIS Tashkent',
     fullDescription:
-      'MDIS Tashkent Singapur ta’lim ekotizimini O‘zbekistonga olib kirgan nodavlat oliygohlardan biri. Dasturlar marketing, bank-moliya, turizm va IT kabi amaliy yo‘nalishlarga yo‘naltirilgan. Talabalar xalqaro o‘quv rejalari, soft skills rivoji va biznesga yaqin muhitdan foyda ko‘radi.',
+      "MDIS Tashkent Singapur ta'lim ekotizimini O'zbekistonga olib kirgan nodavlat oliygohlardan biri. Dasturlar marketing, bank-moliya, turizm va IT kabi amaliy yo'nalishlarga yo'naltirilgan. Talabalar xalqaro o'quv rejalari va biznesga yaqin muhitdan foyda ko'radi.",
     faculties: [
       'Banking and Finance',
       'Business and Management',
@@ -77,9 +89,10 @@ const universities = [
       'Computer Information Systems',
       'Digital Marketing',
     ],
-    tuitionFee: "58 000 000 so'm / yil",
-    location: 'Toshkent shahri, Bunyodkor shoh ko‘chasi 28',
+    contract_year: 58600000,
+    location: "Toshkent shahri, Bunyodkor shoh ko'chasi 28",
     website: 'https://mdis.uz',
+    real_images: [],
     images: [
       'https://images.unsplash.com/photo-1576495199011-eb94736d05d6?auto=format&fit=crop&w=1600&q=80',
       'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=80',
@@ -91,7 +104,7 @@ const universities = [
     rating: 4.7,
     name: 'Turin Polytechnic University in Tashkent',
     fullDescription:
-      'Turin Polytechnic University in Tashkent muhandislik va texnik yo‘nalishlarda Italiya modeli asosida sifatli ta’lim beradi. Universitet avtomobilsozlik, sanoat qurilishi, mexatronika va kompyuter injiniringi sohalariga ixtisoslashgan. Kuchli texnik baza va loyiha ishlari orqali talabalar real ishlab chiqarish jarayonlariga yaqinlashadi.',
+      "Turin Polytechnic University in Tashkent muhandislik va texnik yo'nalishlarda Italiya modeli asosida sifatli ta'lim beradi. Universitet avtomobilsozlik, sanoat qurilishi, mexatronika va kompyuter injiniringi sohalariga ixtisoslashgan va kuchli texnik bazaga ega.",
     faculties: [
       'Mechanical Engineering',
       'Civil Engineering',
@@ -99,9 +112,10 @@ const universities = [
       'Computer Engineering',
       'Mechatronics',
     ],
-    tuitionFee: "52 000 000 so'm / yil",
-    location: 'Toshkent shahri, Kichik halqa yo‘li 17',
+    contract_year: 28500000,
+    location: "Toshkent shahri, Kichik halqa yo'li 17",
     website: 'https://turin.uz',
+    real_images: ['https://turin.uz/academic-buildings/'],
     images: [
       'https://images.unsplash.com/photo-1491841550275-ad7854e35ca6?auto=format&fit=crop&w=1600&q=80',
       'https://images.unsplash.com/photo-1519452575417-564c1401ecc0?auto=format&fit=crop&w=1600&q=80',
@@ -113,16 +127,17 @@ const universities = [
     rating: 4.5,
     name: 'Amity University Tashkent',
     fullDescription:
-      'Amity University Tashkent xalqaro universitetlar tarmog‘ining O‘zbekistondagi kampusi bo‘lib, zamonaviy biznes va IT ta’limini taklif qiladi. O‘quv dasturlari amaliy mashg‘ulotlar, startap madaniyati va xalqaro sertifikatlashuv bilan boyitilgan. Universitet ingliz tilidagi muhit va innovatsion yondashuv bilan mashhur.',
+      "Amity University Tashkent xalqaro universitetlar tarmog'ining O'zbekistondagi kampusi bo'lib, zamonaviy biznes va IT ta'limini taklif qiladi. O'quv dasturlari amaliy mashg'ulotlar, startap madaniyati va innovatsion yondashuv bilan boyitilgan.",
     faculties: [
       'Information Technology',
       'Economics',
       'Business Administration',
       'Tourism Administration',
     ],
-    tuitionFee: "54 000 000 so'm / yil",
-    location: 'Toshkent shahri, Labzak ko‘chasi 70',
+    contract_year: 35000000,
+    location: "Toshkent shahri, Labzak ko'chasi 70",
     website: 'https://amity.uz',
+    real_images: ['https://amity.uz/en/lists/view/692'],
     images: [
       'https://images.unsplash.com/photo-1580537659466-0a9bfa916a54?auto=format&fit=crop&w=1600&q=80',
       'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1600&q=80',
@@ -134,7 +149,7 @@ const universities = [
     rating: 4.8,
     name: 'AKFA University',
     fullDescription:
-      'AKFA University tibbiyot, stomatologiya, farmatsiya va muhandislik yo‘nalishlarida xalqaro akademik standartlarni taklif etadi. Universitet klinik amaliyot, laboratoriya bazasi va ingliz tilidagi dasturlari bilan kuchli pozitsiyaga ega. Sog‘liqni saqlash va texnologiya kesishmasida karyera qurmoqchi bo‘lgan talabalar uchun qulay tanlovdir.',
+      "AKFA University tibbiyot, stomatologiya, farmatsiya va muhandislik yo'nalishlarida xalqaro akademik standartlarni taklif etadi. Universitet klinik amaliyot, laboratoriya bazasi va ingliz tilidagi dasturlari bilan kuchli pozitsiyaga ega.",
     faculties: [
       'Medicine',
       'Dentistry',
@@ -142,9 +157,10 @@ const universities = [
       'Nursing',
       'Computer Engineering',
     ],
-    tuitionFee: "98 000 000 so'm / yil",
-    location: 'Toshkent shahri, Milliy Bog‘ ko‘chasi 264',
+    contract_year: 97200000,
+    location: "Toshkent shahri, Milliy Bog' ko'chasi 264",
     website: 'https://akfauniversity.org',
+    real_images: [],
     images: [
       'https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=1600&q=80',
       'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1600&q=80',
@@ -156,7 +172,7 @@ const universities = [
     rating: 4.6,
     name: 'New Uzbekistan University',
     fullDescription:
-      'New Uzbekistan University davlat miqyosida yangi avlod akademik va tadqiqot markazi sifatida rivojlanmoqda. Universitetda muhandislik, tabiiy fanlar va iqtisodiyot bo‘yicha xalqaro professor-o‘qituvchilar ishtirokida ta’lim beriladi. Tadqiqot, innovatsiya va leadership yo‘nalishlari bu maskanning asosiy ustuvorligidir.',
+      "New Uzbekistan University davlat miqyosida yangi avlod akademik va tadqiqot markazi sifatida rivojlanmoqda. Universitetda muhandislik, tabiiy fanlar va iqtisodiyot bo'yicha xalqaro professor-o'qituvchilar ishtirokida ta'lim beriladi.",
     faculties: [
       'Engineering',
       'Computer Science',
@@ -164,9 +180,10 @@ const universities = [
       'Economics',
       'Natural Sciences',
     ],
-    tuitionFee: "45 000 000 so'm / yil",
-    location: 'Toshkent shahri, Mustaqillik shoh ko‘chasi 54',
+    contract_year: 46300000,
+    location: "Toshkent shahri, Mustaqillik shoh ko'chasi 54",
     website: 'https://newuu.uz',
+    real_images: [],
     images: [
       'https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3?auto=format&fit=crop&w=1600&q=80',
       'https://images.unsplash.com/photo-1606761568499-6d2451b23c66?auto=format&fit=crop&w=1600&q=80',
@@ -178,7 +195,7 @@ const universities = [
     rating: 4.9,
     name: 'Toshkent Davlat Yuridik Universiteti',
     fullDescription:
-      'Toshkent Davlat Yuridik Universiteti huquqshunoslik bo‘yicha mamlakatdagi eng nufuzli oliygohlardan biridir. Universitetda milliy va xalqaro huquq, sud-prokuratura faoliyati hamda yuridik xizmatlar bo‘yicha chuqur ta’lim beriladi. Moot court, yuridik klinikalar va amaliy seminarlar talabalarning kasbiy tayyorgarligini kuchaytiradi.',
+      "Toshkent Davlat Yuridik Universiteti huquqshunoslik bo'yicha mamlakatdagi eng nufuzli oliygohlardan biridir. Universitetda milliy va xalqaro huquq, sud-prokuratura faoliyati hamda yuridik xizmatlar bo'yicha chuqur ta'lim beriladi.",
     faculties: [
       'Xalqaro huquq',
       'Jinoyat huquqi',
@@ -186,9 +203,10 @@ const universities = [
       'Davlat va boshqaruv huquqi',
       'Yuridik xizmat',
     ],
-    tuitionFee: "24 500 000 so'm / yil",
-    location: 'Toshkent shahri, Sayilgoh ko‘chasi 35',
+    contract_year: 24700000,
+    location: "Toshkent shahri, Sayilgoh ko'chasi 35",
     website: 'https://tsul.uz',
+    real_images: [],
     images: [
       'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1600&q=80',
       'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80',
@@ -200,7 +218,7 @@ const universities = [
     rating: 4.5,
     name: 'Toshkent Davlat Iqtisodiyot Universiteti',
     fullDescription:
-      'Toshkent Davlat Iqtisodiyot Universiteti iqtisodiyot, moliya, marketing va xalqaro biznes bo‘yicha uzoq yillik tajribaga ega. Universitet davlat va xususiy sektor uchun boshqaruv, tahlil va moliyaviy rejalashtirish kompetensiyalariga ega mutaxassislar tayyorlaydi. Ta’lim jarayonida data-driven iqtisodiy tahlilga alohida e’tibor qaratiladi.',
+      "Toshkent Davlat Iqtisodiyot Universiteti iqtisodiyot, moliya, marketing va xalqaro biznes bo'yicha uzoq yillik tajribaga ega. Universitet davlat va xususiy sektor uchun boshqaruv va tahlil kompetensiyalariga ega mutaxassislar tayyorlaydi.",
     faculties: [
       'Iqtisodiyot',
       'Moliya',
@@ -208,9 +226,10 @@ const universities = [
       'Xalqaro biznes',
       'Buxgalteriya hisobi',
     ],
-    tuitionFee: "22 800 000 so'm / yil",
-    location: 'Toshkent shahri, Islom Karimov ko‘chasi 49',
+    contract_year: 23100000,
+    location: "Toshkent shahri, Islom Karimov ko'chasi 49",
     website: 'https://tsue.uz',
+    real_images: [],
     images: [
       'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=80',
       'https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1600&q=80',
@@ -222,7 +241,7 @@ const universities = [
     rating: 4.6,
     name: 'Samarqand Davlat Universiteti',
     fullDescription:
-      'Samarqand Davlat Universiteti O‘zbekistonning eng qadimiy va ilmiy maktablari kuchli oliygohlaridan biridir. Universitet gumanitar fanlar, tabiiy fanlar, filologiya va aniq yo‘nalishlarda keng dasturlarni taklif etadi. Kuchli ilmiy an’ana va tarixiy muhit bu maskanni alohida ajratib turadi.',
+      "Samarqand Davlat Universiteti O'zbekistonning eng qadimiy va ilmiy maktablari kuchli oliygohlaridan biridir. Universitet gumanitar fanlar, tabiiy fanlar, filologiya va aniq yo'nalishlarda keng dasturlarni taklif etadi.",
     faculties: [
       'Filologiya',
       'Tarix',
@@ -230,9 +249,10 @@ const universities = [
       'Biologiya',
       'Amaliy matematika',
     ],
-    tuitionFee: "18 500 000 so'm / yil",
+    contract_year: 18600000,
     location: 'Samarqand shahri, Universitet xiyoboni 15',
     website: 'https://samdu.uz',
+    real_images: [],
     images: [
       'https://images.unsplash.com/photo-1460518451285-97b6aa326961?auto=format&fit=crop&w=1600&q=80',
       'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=1600&q=80',
@@ -244,7 +264,7 @@ const universities = [
     rating: 4.4,
     name: 'Buxoro Davlat Universiteti',
     fullDescription:
-      'Buxoro Davlat Universiteti mintaqadagi yirik akademik markazlardan biri bo‘lib, pedagogika, filologiya, iqtisodiyot va turizm yo‘nalishlarida ta’lim beradi. Universitetda nazariy tayyorgarlik bilan bir qatorda mintaqaviy iqtisodiy ehtiyojlarga mos amaliy ko‘nikmalar ham shakllantiriladi. Tarixiy Buxoro muhitida o‘qish talabalar uchun qo‘shimcha motivatsiya beradi.',
+      "Buxoro Davlat Universiteti mintaqadagi yirik akademik markazlardan biri bo'lib, pedagogika, filologiya, iqtisodiyot va turizm yo'nalishlarida ta'lim beradi. Universitetda nazariy tayyorgarlik bilan bir qatorda amaliy ko'nikmalar ham shakllantiriladi.",
     faculties: [
       'Pedagogika',
       'Turizm',
@@ -252,9 +272,10 @@ const universities = [
       'Filologiya',
       'Axborot texnologiyalari',
     ],
-    tuitionFee: "17 900 000 so'm / yil",
-    location: 'Buxoro shahri, Muhammad Iqbol ko‘chasi 11',
+    contract_year: 17950000,
+    location: "Buxoro shahri, Muhammad Iqbol ko'chasi 11",
     website: 'https://buxdu.uz',
+    real_images: [],
     images: [
       'https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=1600&q=80',
       'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=80',
@@ -264,9 +285,9 @@ const universities = [
   {
     id: 'ferdu',
     rating: 4.3,
-    name: 'Farg‘ona Davlat Universiteti',
+    name: "Farg'ona Davlat Universiteti",
     fullDescription:
-      'Farg‘ona Davlat Universiteti vodiy hududidagi tayanch ilmiy-ta’lim markazlaridan biri sanaladi. Universitet filologiya, pedagogika, fizika-matematika va iqtisodiyot yo‘nalishlarida keng qamrovli ta’lim beradi. Mahalliy sanoat va ta’lim tizimi bilan bog‘langan amaliy loyihalar talabalar rivojiga xizmat qiladi.',
+      "Farg'ona Davlat Universiteti vodiy hududidagi tayanch ilmiy-ta'lim markazlaridan biri sanaladi. Universitet filologiya, pedagogika, fizika-matematika va iqtisodiyot yo'nalishlarida keng qamrovli ta'lim beradi.",
     faculties: [
       'Pedagogika',
       'Filologiya',
@@ -274,9 +295,10 @@ const universities = [
       'Iqtisodiyot',
       'Jismoniy madaniyat',
     ],
-    tuitionFee: "16 800 000 so'm / yil",
-    location: 'Farg‘ona shahri, Murabbiylar ko‘chasi 19',
+    contract_year: 16850000,
+    location: "Farg'ona shahri, Murabbiylar ko'chasi 19",
     website: 'https://fdu.uz',
+    real_images: [],
     images: [
       'https://images.unsplash.com/photo-1564981797816-1043664bf78d?auto=format&fit=crop&w=1600&q=80',
       'https://images.unsplash.com/photo-1607013407627-6ee814329547?auto=format&fit=crop&w=1600&q=80',
@@ -288,7 +310,7 @@ const universities = [
     rating: 4.4,
     name: 'Namangan Davlat Universiteti',
     fullDescription:
-      'Namangan Davlat Universiteti pedagogika, muhandislik va tabiiy fanlar bo‘yicha hududiy ehtiyojlarga mos mutaxassislar tayyorlaydi. Universitetda zamonaviy o‘quv laboratoriyalari, ilmiy to‘garaklar va talabalar tashabbuslari faol qo‘llab-quvvatlanadi. Ta’lim jarayoni nazariya va amaliyotni uyg‘unlashtirishga yo‘naltirilgan.',
+      "Namangan Davlat Universiteti pedagogika, muhandislik va tabiiy fanlar bo'yicha hududiy ehtiyojlarga mos mutaxassislar tayyorlaydi. Universitetda zamonaviy o'quv laboratoriyalari va talabalar tashabbuslari faol qo'llab-quvvatlanadi.",
     faculties: [
       'Pedagogika',
       'Fizika-texnika',
@@ -296,9 +318,10 @@ const universities = [
       'Iqtisodiyot',
       'Xorijiy tillar',
     ],
-    tuitionFee: "16 500 000 so'm / yil",
-    location: 'Namangan shahri, Uychi ko‘chasi 316',
+    contract_year: 16550000,
+    location: 'Namangan shahri, Uychi ko\'chasi 316',
     website: 'https://namdu.uz',
+    real_images: [],
     images: [
       'https://images.unsplash.com/photo-1462536943532-57a629f6cc60?auto=format&fit=crop&w=1600&q=80',
       'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1600&q=80',
@@ -310,7 +333,7 @@ const universities = [
     rating: 4.2,
     name: 'Jizzax Politexnika Instituti',
     fullDescription:
-      'Jizzax Politexnika Instituti qurilish, energetika, transport va ishlab chiqarish texnologiyalari bo‘yicha amaliy yo‘naltirilgan ta’lim beradi. Institut sanoatga yaqin o‘quv modeli, texnik laboratoriyalar va muhandislik loyihalari bilan kuchli. Infrastrukturaviy va texnologik sohalarda karyera qurmoqchi bo‘lganlar uchun muhim tanlovlardan biridir.',
+      "Jizzax Politexnika Instituti qurilish, energetika, transport va ishlab chiqarish texnologiyalari bo'yicha amaliy yo'naltirilgan ta'lim beradi. Institut sanoatga yaqin o'quv modeli va texnik laboratoriyalar bilan kuchli.",
     faculties: [
       'Qurilish muhandisligi',
       'Energetika',
@@ -318,9 +341,10 @@ const universities = [
       'Texnologik mashinalar',
       'Iqtisodiyot va menejment',
     ],
-    tuitionFee: "18 200 000 so'm / yil",
-    location: 'Jizzax shahri, Islom Karimov ko‘chasi 4',
+    contract_year: 18300000,
+    location: "Jizzax shahri, Islom Karimov ko'chasi 4",
     website: 'https://jizpi.uz',
+    real_images: [],
     images: [
       'https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1600&q=80',
       'https://images.unsplash.com/photo-1544531586-fde5298cdd40?auto=format&fit=crop&w=1600&q=80',
@@ -332,23 +356,24 @@ const universities = [
     rating: 4.5,
     name: 'Nizomiy nomidagi Toshkent Davlat Pedagogika Universiteti',
     fullDescription:
-      'Nizomiy nomidagi Toshkent Davlat Pedagogika Universiteti pedagog kadrlar tayyorlash bo‘yicha mamlakatdagi eng yirik oliy ta’lim muassasalaridan biri. Universitet ta’lim menejmenti, maktabgacha ta’lim, maxsus pedagogika va filologiya kabi yo‘nalishlarda kuchli dasturlarga ega. Ta’lim metodikasi va amaliy pedagogik mashg‘ulotlar bu yerda markaziy o‘rin tutadi.',
+      "Nizomiy nomidagi Toshkent Davlat Pedagogika Universiteti pedagog kadrlar tayyorlash bo'yicha mamlakatdagi eng yirik oliy ta'lim muassasalaridan biri. Universitet ta'lim metodikasi va amaliy pedagogik mashg'ulotlarga katta urg'u beradi.",
     faculties: [
-      'Boshlang‘ich ta’lim',
-      'Maktabgacha ta’lim',
+      "Boshlang'ich ta'lim",
+      'Maktabgacha ta\'lim',
       'Maxsus pedagogika',
       'Filologiya',
-      'Ta’lim menejmenti',
+      "Ta'lim menejmenti",
     ],
-    tuitionFee: "19 300 000 so'm / yil",
-    location: 'Toshkent shahri, Bunyodkor shoh ko‘chasi 27',
+    contract_year: 19400000,
+    location: "Toshkent shahri, Bunyodkor shoh ko'chasi 27",
     website: 'https://tdpu.uz',
+    real_images: [],
     images: [
       'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80',
       'https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=1600&q=80',
       'https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=1600&q=80',
     ],
   },
-];
+].map(withPricing);
 
 export default universities;

@@ -14,21 +14,14 @@ export default function ListingPage() {
 
   const sortedUniversities = useMemo(() => {
     const list = [...universities];
-    
-    // Helper to parse tuition fee (e.g., "28 000 000 so'm / yil" -> 28000000)
-    const parsePrice = (priceStr) => {
-      if (!priceStr) return 0;
-      const parsed = parseInt(priceStr.replace(/\D/g, ''), 10);
-      return isNaN(parsed) ? 0 : parsed;
-    };
 
     switch (sortType) {
       case 'ratingDesc':
         return list.sort((a, b) => b.rating - a.rating);
       case 'priceAsc':
-        return list.sort((a, b) => parsePrice(a.tuitionFee) - parsePrice(b.tuitionFee));
+        return list.sort((a, b) => a.contract_year - b.contract_year);
       case 'priceDesc':
-        return list.sort((a, b) => parsePrice(b.tuitionFee) - parsePrice(a.tuitionFee));
+        return list.sort((a, b) => b.contract_year - a.contract_year);
       case 'alpha':
         return list.sort((a, b) => a.name.localeCompare(b.name));
       default:
@@ -92,12 +85,16 @@ export default function ListingPage() {
                     key={university.id} 
                     className="relative block group/card"
                   >
-                    <Link to={`/university/${university.id}`}>
+                    <Link to={`/university/${university.id}`} className="block h-full">
                       <UniversityCard
+                        universityId={university.id}
                         title={university.name}
                         location={university.location}
                         image={university.images[0]}
+                        description={university.fullDescription}
                         tags={university.faculties.slice(0, 3)}
+                        contractYear={university.contract_year}
+                        contractMonth={university.contract_month}
                       />
                     </Link>
                     <button

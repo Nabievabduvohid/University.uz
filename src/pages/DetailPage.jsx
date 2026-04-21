@@ -159,6 +159,9 @@ export default function DetailPage() {
                         <p className="mt-2 text-2xl font-semibold text-white">
                           {university.tuitionFee}
                         </p>
+                        <p className="mt-2 text-sm text-slate-400">
+                          Oyiga: {university.contract_month.toLocaleString('uz-UZ')} UZS
+                        </p>
                       </div>
 
                       <div className="rounded-2xl border border-white/10 bg-black/10 p-4">

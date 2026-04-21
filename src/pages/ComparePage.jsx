@@ -5,7 +5,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import BackgroundGlow from '../components/BackgroundGlow';
 import { useCompare } from '../context/CompareContext';
-import universitiesData from '../data/universities';
+import universitiesData, { formatUzCurrency } from '../data/universities';
 import { useLanguage } from '../context/LanguageContext';
 
 export default function ComparePage() {
@@ -101,7 +101,10 @@ export default function ComparePage() {
 
                       {/* Tuitions */}
                       <div className="h-16 items-center flex border-b border-white/10">
-                        <span className="font-bold text-[#10b981] text-lg">{uni.tuitionFee}</span>
+                        <div>
+                          <div className="font-bold text-[#10b981] text-lg">{uni.tuitionFee}</div>
+                          <div className="text-xs text-gray-400">Oyiga: {formatUzCurrency(uni.contract_month)}</div>
+                        </div>
                       </div>
 
                       {/* Rating */}

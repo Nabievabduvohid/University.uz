@@ -203,13 +203,18 @@ export default function SalaryCalculator() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.9 }}
                     transition={{ delay: idx * 0.1 }}
+                    className="h-full"
                    >
-                     <Link to={`/university/${uni.id}`} className="block block group/card">
+                     <Link to={`/university/${uni.id}`} className="block h-full group/card">
                        <UniversityCard
+                          universityId={uni.id}
                           title={uni.name}
                           location={uni.location}
                           image={uni.images[0]}
+                          description={uni.fullDescription}
                           tags={uni.faculties.slice(0, 2)}
+                          contractYear={uni.contract_year}
+                          contractMonth={uni.contract_month}
                        />
                      </Link>
                    </motion.div>

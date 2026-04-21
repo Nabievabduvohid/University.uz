@@ -37,6 +37,9 @@ export const translations = {
       destinations: [
         ['Toshkent', 'Raqamli muhandislik', '92 moslik balli'],
         ['Samarqand', 'Biznes tahlili', '87 moslik balli'],
+        ['Toshkent', "Sun'iy intellekt", '94 trend balli'],
+        ['Navoiy', 'Logistika', '89 trend balli'],
+        ['Andijon', 'Tibbiyot', '91 trend balli'],
       ],
     },
     stats: {
