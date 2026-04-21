@@ -34,11 +34,14 @@ export default function Hero() {
   const { isDark } = useTheme();
   const heroTitle = t.hero.title;
 
-  const letters = useMemo(
+  const words = useMemo(
     () =>
-      heroTitle.split('').map((character, index) => ({
-        id: `${character}-${index}`,
-        value: character === ' ' ? '\u00A0' : character,
+      heroTitle.split(' ').map((word, wordIndex) => ({
+        id: `${word}-${wordIndex}`,
+        letters: word.split('').map((character, characterIndex) => ({
+          id: `${wordIndex}-${character}-${characterIndex}`,
+          value: character,
+        })),
       })),
     [heroTitle],
   );
@@ -71,6 +74,8 @@ export default function Hero() {
     return () => ctx.revert();
   }, [heroTitle]);
 
+  titleRefs.current = [];
+
   return (
     <section
       id="home"
@@ -98,18 +103,27 @@ export default function Hero() {
           </div>
 
           <h1
-            className="max-w-4xl text-5xl font-semibold leading-[0.96] tracking-[-0.05em] sm:text-6xl lg:text-7xl xl:text-[5.5rem]"
+            className="max-w-[16ch] break-keep text-[clamp(2.85rem,10vw,4.65rem)] font-semibold leading-[0.98] tracking-[-0.05em] sm:max-w-[18ch] sm:text-[clamp(3.4rem,8vw,5.3rem)] md:max-w-[20ch] lg:max-w-[22ch] lg:whitespace-nowrap lg:text-[clamp(4.2rem,5.6vw,6.3rem)]"
             style={{ color: 'var(--color-text)' }}
           >
-            {letters.map((letter, index) => (
+            {words.map((word) => (
               <span
-                key={letter.id}
-                ref={(element) => {
-                  titleRefs.current[index] = element;
-                }}
-                className="inline-block will-change-transform"
+                key={word.id}
+                className="mr-[0.18em] inline-flex whitespace-nowrap last:mr-0"
               >
-                {letter.value}
+                {word.letters.map((letter) => (
+                  <span
+                    key={letter.id}
+                    ref={(element) => {
+                      if (element) {
+                        titleRefs.current.push(element);
+                      }
+                    }}
+                    className="inline-block will-change-transform"
+                  >
+                    {letter.value}
+                  </span>
+                ))}
               </span>
             ))}
           </h1>

@@ -41,6 +41,18 @@ body {
   transition: background-color 0.45s ease, color 0.45s ease;
 }
 
+#root {
+  color: inherit;
+}
+
+.theme-light :where(.text-white, .text-white\/85, .text-white\/50, .text-white\/40, .text-white\/20) {
+  color: var(--color-text) !important;
+}
+
+.theme-light :where(.hover\:text-white:hover, .group:hover .group-hover\:text-white) {
+  color: var(--color-text) !important;
+}
+
 *,
 *::before,
 *::after {
