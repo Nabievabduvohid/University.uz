@@ -27,7 +27,7 @@ export default function Navbar() {
         initial={{ opacity: 0, y: -18 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="mx-auto flex max-w-7xl items-center justify-between rounded-full border px-5 py-3 backdrop-blur-2xl sm:px-7"
+        className="mx-auto flex w-full max-w-7xl flex-row flex-wrap sm:flex-nowrap items-center justify-between gap-4 sm:gap-10 rounded-[2rem] sm:rounded-full border px-5 py-3 backdrop-blur-2xl sm:px-7"
         style={{
           borderColor: 'var(--color-border)',
           backgroundColor: 'var(--color-surface)',
@@ -36,7 +36,7 @@ export default function Navbar() {
             : '0 20px 60px rgba(148, 163, 184, 0.18)',
         }}
       >
-        <Link to="/" className="flex flex-shrink-0 items-center group">
+        <Link to="/" className="flex flex-shrink-0 items-center group w-full sm:w-auto" style={{ minWidth: '200px' }}>
           <svg viewBox="0 0 280 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-10 w-auto">
             <defs>
               {/* Theme-based Gradient */}
@@ -99,7 +99,7 @@ export default function Navbar() {
           })}
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex w-full sm:w-auto items-center justify-between sm:justify-end gap-2 flex-wrap">
           {compareList.length > 0 && (
             <Link
               to="/compare"

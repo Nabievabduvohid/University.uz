@@ -102,13 +102,12 @@ export default function Hero() {
           </div>
 
           <h1
-            className="max-w-full whitespace-normal break-keep text-2xl font-semibold leading-[1.1] tracking-[-0.05em] [overflow-wrap:normal] sm:text-4xl lg:text-5xl text-slate-900 dark:text-white"
-            style={{ wordBreak: 'keep-all', overflowWrap: 'normal' }}
+            className="flex flex-wrap gap-x-[0.25em] gap-y-2 max-w-full text-3xl font-semibold leading-[1.15] tracking-[-0.05em] sm:text-4xl lg:text-5xl text-slate-900 dark:text-white"
           >
             {words.map((word) => (
               <span
                 key={word.id}
-                className="mr-[0.18em] inline-flex whitespace-nowrap last:mr-0"
+                className="inline-flex whitespace-nowrap"
               >
                 {word.letters.map((letter) => (
                   <span
