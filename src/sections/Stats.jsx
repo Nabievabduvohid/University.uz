@@ -71,12 +71,11 @@ export default function Stats() {
           >
             <span className="text-sm uppercase tracking-[0.32em] text-[#7bf7ff]">{t.stats.eyebrow}</span>
             <h2
-              className="mt-4 text-4xl font-semibold tracking-[-0.04em] sm:text-5xl"
-              style={{ color: 'var(--color-text)' }}
+              className="mt-4 text-4xl font-semibold tracking-[-0.04em] sm:text-5xl text-slate-900 dark:text-white"
             >
               {t.stats.title}
             </h2>
-            <p className="mt-5 text-base leading-8 sm:text-lg" style={{ color: 'var(--color-text-muted)' }}>
+            <p className="mt-5 text-base leading-8 sm:text-lg text-slate-600 dark:text-gray-400">
               {t.stats.description}
             </p>
           </motion.div>
@@ -85,11 +84,10 @@ export default function Stats() {
             {t.stats.features.map((feature) => (
               <span
                 key={feature}
-                className="rounded-full border px-4 py-2 text-xs font-medium uppercase tracking-[0.18em] backdrop-blur-xl"
+                className="rounded-full border px-4 py-2 text-xs font-medium uppercase tracking-[0.18em] backdrop-blur-xl text-slate-600 dark:text-gray-400"
                 style={{
                   borderColor: 'var(--color-border)',
                   backgroundColor: 'var(--color-bg-elevated)',
-                  color: 'var(--color-text-soft)',
                 }}
               >
                 {feature}
@@ -118,15 +116,14 @@ export default function Stats() {
                   ref={(element) => {
                     numberRefs.current[index] = element;
                   }}
-                  className="min-h-[4.5rem] text-5xl font-semibold tracking-[-0.05em]"
-                  style={{ color: 'var(--color-text)' }}
+                  className="min-h-[4.5rem] text-5xl font-semibold tracking-[-0.05em] text-slate-900 dark:text-white"
                 >
                   0{stat.suffix}
                 </div>
-                <h3 className="mt-5 text-lg font-medium" style={{ color: 'var(--color-text)' }}>
+                <h3 className="mt-5 text-lg font-medium text-slate-900 dark:text-white">
                   {`${stat.value}${stat.suffix} ${stat.label}`}
                 </h3>
-                <p className="mt-3 text-sm leading-7" style={{ color: 'var(--color-text-muted)' }}>
+                <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-gray-400">
                   {stat.description}
                 </p>
               </div>

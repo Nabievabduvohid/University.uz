@@ -6,10 +6,12 @@ import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import universities from '../data/universities';
 import DocChecklist from '../components/DocChecklist';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function DetailPage() {
   const { id } = useParams();
   const pageRef = useRef(null);
+  const { language } = useLanguage();
   const university = universities.find((item) => item.id === id);
 
   useEffect(() => {
@@ -50,10 +52,10 @@ export default function DetailPage() {
           <main className="px-6 pb-24 pt-28 sm:px-8 lg:px-12">
             <section className="mx-auto max-w-3xl rounded-[2rem] border border-white/10 bg-white/[0.05] p-8 text-center backdrop-blur-2xl">
               <p className="text-sm uppercase tracking-[0.32em] text-slate-500">404</p>
-              <h1 className="mt-4 text-4xl font-semibold tracking-[-0.04em] text-white">
+              <h1 className="mt-4 text-4xl font-semibold tracking-[-0.04em] text-slate-900 dark:text-white">
                 Universitet topilmadi
               </h1>
-              <p className="mt-4 text-base leading-8 text-slate-400">
+              <p className="mt-4 text-base leading-8 text-slate-600 dark:text-slate-400">
                 Tanlangan universitet ma’lumoti mavjud emas. Katalogga qaytib boshqa
                 universitetni tanlang.
               </p>
@@ -83,19 +85,19 @@ export default function DetailPage() {
             <div className="detail-hero relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.05]">
               <img
                 src={university.images[0]}
-                alt={university.name}
+                alt={university[`name_${language}`]}
                 className="h-[26rem] w-full object-cover sm:h-[32rem]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#05070A] via-[#05070A]/40 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/40 dark:from-[#05070A] dark:via-[#05070A]/40 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-6 sm:p-10">
                 <Link
                   to="/universities"
-                  className="detail-badge inline-flex min-h-11 items-center rounded-full border border-white/14 bg-black/25 px-5 text-sm font-medium text-white/85 backdrop-blur-xl"
+                  className="detail-badge inline-flex min-h-11 items-center rounded-full border border-gray-300 dark:border-white/14 bg-white/70 dark:bg-black/25 px-5 text-sm font-medium text-slate-800 dark:text-white/85 backdrop-blur-xl"
                 >
                   Katalogga qaytish
                 </Link>
-                <h1 className="detail-title mt-5 max-w-4xl text-4xl font-semibold tracking-[-0.05em] text-white sm:text-5xl lg:text-6xl">
-                  {university.name}
+                <h1 className="detail-title mt-5 max-w-4xl text-4xl font-semibold tracking-[-0.05em] text-slate-900 dark:text-white sm:text-5xl lg:text-6xl">
+                  {university[`name_${language}`]}
                 </h1>
               </div>
             </div>
@@ -103,23 +105,23 @@ export default function DetailPage() {
             <div className="mt-10 grid gap-8 lg:grid-cols-[minmax(0,1fr)_22rem]">
               <div className="space-y-8">
                 <article className="detail-copy rounded-[2rem] border border-white/10 bg-white/[0.05] p-7 backdrop-blur-2xl sm:p-8">
-                  <span className="text-sm uppercase tracking-[0.28em] text-[#7bf7ff]">
+                  <span className="text-sm uppercase tracking-[0.28em] text-cyan-600 dark:text-[#7bf7ff]">
                     Universitet haqida
                   </span>
-                  <p className="mt-5 text-base leading-8 text-slate-300 sm:text-lg">
-                    {university.fullDescription}
+                  <p className="mt-5 text-base leading-8 text-slate-700 dark:text-slate-300 sm:text-lg">
+                    {university[`fullDescription_${language}`]}
                   </p>
                 </article>
 
                 <section className="detail-faculties rounded-[2rem] border border-white/10 bg-white/[0.05] p-7 backdrop-blur-2xl sm:p-8">
-                  <span className="text-sm uppercase tracking-[0.28em] text-[#7bf7ff]">
+                  <span className="text-sm uppercase tracking-[0.28em] text-cyan-600 dark:text-[#7bf7ff]">
                     Fakultetlar
                   </span>
                   <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                    {university.faculties.map((faculty) => (
+                    {university[`faculties_${language}`].map((faculty) => (
                       <div
                         key={faculty}
-                        className="rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-4 text-sm font-medium text-slate-200"
+                        className="rounded-2xl border border-gray-200 dark:border-white/10 bg-slate-50 dark:bg-white/[0.04] px-4 py-4 text-sm font-medium text-slate-800 dark:text-slate-200"
                       >
                         {faculty}
                       </div>
@@ -135,7 +137,7 @@ export default function DetailPage() {
                     >
                       <img
                         src={image}
-                        alt={`${university.name} preview ${index + 2}`}
+                        alt={`${university[`name_${language}`]} preview ${index + 2}`}
                         className="h-64 w-full object-cover"
                       />
                     </div>
@@ -152,28 +154,28 @@ export default function DetailPage() {
                     </span>
 
                     <div className="mt-6 space-y-5">
-                      <div className="rounded-2xl border border-white/10 bg-black/10 p-4">
+                      <div className="rounded-2xl border border-gray-200 dark:border-white/10 bg-slate-100 dark:bg-black/10 p-4">
                         <p className="text-xs uppercase tracking-[0.22em] text-slate-500">
                           Kontrakt narxi
                         </p>
-                        <p className="mt-2 text-2xl font-semibold text-white">
+                        <p className="mt-2 text-2xl font-semibold text-slate-900 dark:text-white">
                           {university.tuitionFee}
                         </p>
-                        <p className="mt-2 text-sm text-slate-400">
+                        <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
                           Oyiga: {university.contract_month.toLocaleString('uz-UZ')} UZS
                         </p>
                       </div>
 
-                      <div className="rounded-2xl border border-white/10 bg-black/10 p-4">
+                      <div className="rounded-2xl border border-gray-200 dark:border-white/10 bg-slate-100 dark:bg-black/10 p-4">
                         <p className="text-xs uppercase tracking-[0.22em] text-slate-500">
                           Manzil
                         </p>
-                        <p className="mt-2 text-sm leading-7 text-slate-300">
-                          {university.location}
+                        <p className="mt-2 text-sm leading-7 text-slate-700 dark:text-slate-300">
+                          {university[`location_${language}`]}
                         </p>
                       </div>
 
-                      <div className="rounded-2xl border border-white/10 bg-black/10 p-4">
+                      <div className="rounded-2xl border border-gray-200 dark:border-white/10 bg-slate-100 dark:bg-black/10 p-4">
                         <p className="text-xs uppercase tracking-[0.22em] text-slate-500">
                           Rasmiy sayt
                         </p>
@@ -181,7 +183,7 @@ export default function DetailPage() {
                           href={university.website}
                           target="_blank"
                           rel="noreferrer"
-                          className="mt-2 block text-sm font-medium text-[#7bf7ff] transition hover:text-white"
+                          className="mt-2 block text-sm font-medium text-sky-600 dark:text-[#7bf7ff] transition hover:text-slate-900 dark:hover:text-white"
                         >
                           {university.website}
                         </a>

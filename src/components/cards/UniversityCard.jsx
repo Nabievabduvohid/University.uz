@@ -130,7 +130,7 @@ const UniversityCard = ({
         </div>
 
         <div className="flex min-h-0 flex-1 flex-col">
-          <h3 className="text-xl font-bold leading-snug tracking-wide" style={{ color: 'var(--color-text)' }}>
+          <h3 className="text-xl font-bold leading-snug tracking-wide text-slate-900 dark:text-white">
             {title}
           </h3>
 
@@ -149,7 +149,7 @@ const UniversityCard = ({
             </div>
           )}
 
-          <p className="mb-5 mt-4 line-clamp-3 text-sm" style={{ color: 'var(--color-text-muted)' }}>
+          <p className="mb-5 mt-4 line-clamp-3 text-sm text-slate-600 dark:text-gray-400">
             {description ?? t.card.description}
           </p>
 
@@ -157,11 +157,10 @@ const UniversityCard = ({
             {tags ? tags.map((tag, idx) => (
               <span
                 key={idx}
-                className="rounded-full border px-3 py-1 text-[11px] font-medium"
+                className="rounded-full border px-3 py-1 text-[11px] font-medium text-slate-600 dark:text-gray-300"
                 style={{
                   borderColor: 'var(--color-border)',
                   backgroundColor: 'var(--color-bg-elevated)',
-                  color: 'var(--color-text-soft)',
                 }}
               >
                 {tag}
@@ -176,12 +175,11 @@ const UniversityCard = ({
 
           <div
             className={twMerge(
-              'group/btn mt-auto flex w-full items-center justify-center gap-2 rounded-xl border py-3.5 font-medium transition-all duration-300 group-hover:border-transparent group-hover:bg-gradient-to-r group-hover:from-[#2D4DF2] group-hover:to-[#DA33BF] group-hover:shadow-[0_4px_15px_rgba(218,51,191,0.3)]',
+              'group/btn mt-auto flex w-full items-center justify-center gap-2 rounded-xl border py-3.5 font-medium transition-all duration-300 group-hover:border-transparent group-hover:bg-gradient-to-r group-hover:from-[#2D4DF2] group-hover:to-[#DA33BF] group-hover:shadow-[0_4px_15px_rgba(218,51,191,0.3)] text-slate-900 dark:text-white group-hover:text-white',
             )}
             style={{
               borderColor: 'var(--color-border)',
               backgroundColor: 'var(--color-bg-elevated)',
-              color: 'var(--color-text)',
             }}
           >
             {t.card.action}

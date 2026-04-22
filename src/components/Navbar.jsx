@@ -59,10 +59,10 @@ export default function Navbar() {
             </g>
 
             {/* Typography */}
-            <text x="75" y="32" fontFamily="Inter, sans-serif" fontWeight="900" fontSize="22" letterSpacing="0.08em" fill="var(--color-text)" className="transition-colors duration-300">
+            <text x="75" y="32" fontFamily="Inter, sans-serif" fontWeight="900" fontSize="22" letterSpacing="0.08em" className="fill-slate-900 dark:fill-white transition-colors duration-300">
               UNIVERSITY<tspan fill={isDark ? "#00E5FF" : "#40C4FF"}>.UZ</tspan>
             </text>
-            <text x="77" y="48" fontFamily="Inter, sans-serif" fontWeight="600" fontSize="9" letterSpacing="0.25em" fill="var(--color-text-muted)" textTransform="uppercase">
+            <text x="77" y="48" fontFamily="Inter, sans-serif" fontWeight="600" fontSize="9" letterSpacing="0.25em" className="fill-slate-500 dark:fill-gray-400" textTransform="uppercase">
               Premium Education Hub
             </text>
           </svg>
@@ -84,11 +84,8 @@ export default function Navbar() {
                 to={item.href}
                 className={twMerge(
                   'group relative overflow-hidden rounded-full px-5 py-2 text-sm font-medium transition-all duration-300',
-                  isActive ? 'text-[#38bdf8] bg-white/5' : 'hover:text-white'
+                  isActive ? 'text-[#38bdf8] bg-slate-100 dark:bg-white/5' : 'text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white'
                 )}
-                style={{
-                  color: isActive ? '#38bdf8' : 'var(--color-text-soft)',
-                }}
               >
                 <span className="relative z-10">{item.label}</span>
                 <span 
@@ -116,11 +113,10 @@ export default function Navbar() {
           <button
             type="button"
             onClick={toggleLanguage}
-            className="inline-flex min-h-11 items-center gap-2 rounded-full border px-3 text-xs font-semibold uppercase tracking-[0.2em] transition duration-300"
+            className="inline-flex min-h-11 items-center gap-2 rounded-full border px-3 text-xs font-semibold uppercase tracking-[0.2em] transition duration-300 text-slate-900 dark:text-white"
             style={{
               borderColor: 'var(--color-border)',
               backgroundColor: 'var(--color-bg-elevated)',
-              color: 'var(--color-text)',
             }}
             aria-label={t.navbar.languageLabel}
           >
@@ -145,8 +141,8 @@ export default function Navbar() {
               className="absolute left-1.5 top-1.5 h-8 w-8 rounded-full bg-[linear-gradient(135deg,#79F7FF_0%,#2764FF_100%)] shadow-[0_10px_30px_rgba(39,100,255,0.28)]"
             />
             <span className="relative z-10 flex w-full items-center justify-between px-1.5 text-[10px] font-semibold uppercase tracking-[0.18em]">
-              <span style={{ color: isDark ? '#020617' : 'var(--color-text-muted)' }}>D</span>
-              <span style={{ color: !isDark ? '#020617' : 'var(--color-text-muted)' }}>L</span>
+              <span className={isDark ? 'text-slate-900' : 'text-slate-400'}>D</span>
+              <span className={!isDark ? 'text-slate-900' : 'text-slate-400'}>L</span>
             </span>
           </button>
 
@@ -164,8 +160,7 @@ export default function Navbar() {
             <div className="hidden sm:flex items-center gap-2">
               <Link
                 to="/login"
-                className="min-h-11 flex items-center rounded-full px-4 text-sm font-medium transition duration-300 hover:text-[#38bdf8]"
-                style={{ color: 'var(--color-text-soft)' }}
+                className="min-h-11 flex items-center rounded-full px-4 text-sm font-medium transition duration-300 hover:text-[#38bdf8] text-slate-600 dark:text-gray-400"
               >
                 {t.navbar.login}
               </Link>

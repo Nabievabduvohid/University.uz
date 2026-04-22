@@ -127,20 +127,20 @@ export default function SalaryCalculator() {
 
         <main className="flex-grow pt-32 pb-24 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto w-full">
           <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-black text-white mb-4">{t.calculator.title}</h1>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">{t.calculator.desc}</p>
+            <h1 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-4">{t.calculator.title}</h1>
+            <p className="text-slate-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">{t.calculator.desc}</p>
           </div>
 
           <div className="grid lg:grid-cols-12 gap-10">
-            <div className="lg:col-span-5 space-y-8 bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-2xl">
+            <div className="lg:col-span-5 space-y-8 bg-slate-50/80 dark:bg-white/5 backdrop-blur-xl border border-gray-200 dark:border-white/10 rounded-3xl p-8 shadow-2xl">
               <div>
-                <label className="block text-sm font-semibold text-gray-300 mb-3 uppercase tracking-wider">
+                <label className="block text-sm font-semibold text-slate-700 dark:text-gray-300 mb-3 uppercase tracking-wider">
                   {t.calculator.selectField}
                 </label>
                 <select
                   value={field}
                   onChange={(event) => setField(event.target.value)}
-                  className="w-full bg-black/40 border border-white/10 text-white rounded-xl px-5 py-4 outline-none focus:ring-2 focus:ring-[#e81cff] transition-all appearance-none cursor-pointer"
+                  className="w-full bg-slate-100 dark:bg-black/40 border border-gray-200 dark:border-white/10 text-slate-900 dark:text-white rounded-xl px-5 py-4 outline-none focus:ring-2 focus:ring-[#e81cff] transition-all appearance-none cursor-pointer"
                 >
                   {salaryData.map((item) => (
                     <option key={item.id} value={item.id}>
@@ -151,10 +151,10 @@ export default function SalaryCalculator() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-300 mb-3 uppercase tracking-wider">
+                <label className="block text-sm font-semibold text-slate-700 dark:text-gray-300 mb-3 uppercase tracking-wider">
                   {t.calculator.experience}
                 </label>
-                <div className="grid grid-cols-3 gap-2 rounded-xl bg-black/40 border border-white/10 p-2">
+                <div className="grid grid-cols-3 gap-2 rounded-xl bg-slate-100 dark:bg-black/40 border border-gray-200 dark:border-white/10 p-2">
                   {Object.keys(experienceBaseSalary).map((level) => (
                     <button
                       key={level}
@@ -162,8 +162,8 @@ export default function SalaryCalculator() {
                       onClick={() => setExperience(level)}
                       className={`rounded-lg px-4 py-3 text-sm font-semibold transition-colors ${
                         experience === level
-                          ? 'bg-[#38bdf8]/20 border border-[#38bdf8]/50 text-white'
-                          : 'border border-transparent text-gray-400 hover:text-white hover:bg-white/5'
+                          ? 'bg-[#38bdf8]/20 border border-[#38bdf8]/50 text-sky-700 dark:text-white'
+                          : 'border border-transparent text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-white/5'
                       }`}
                     >
                       {ui.experienceLevels[level]}
@@ -173,13 +173,13 @@ export default function SalaryCalculator() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-300 mb-3 uppercase tracking-wider">
+                <label className="block text-sm font-semibold text-slate-700 dark:text-gray-300 mb-3 uppercase tracking-wider">
                   {t.calculator.englishLabel}
                 </label>
                 <select
                   value={englishLevel}
                   onChange={(event) => setEnglishLevel(event.target.value)}
-                  className="w-full bg-black/40 border border-white/10 text-white rounded-xl px-5 py-4 outline-none focus:ring-2 focus:ring-[#38bdf8] transition-all appearance-none cursor-pointer"
+                  className="w-full bg-slate-100 dark:bg-black/40 border border-gray-200 dark:border-white/10 text-slate-900 dark:text-white rounded-xl px-5 py-4 outline-none focus:ring-2 focus:ring-[#38bdf8] transition-all appearance-none cursor-pointer"
                 >
                   {englishLevels.map((item) => (
                     <option key={item.id} value={item.id}>
@@ -190,7 +190,7 @@ export default function SalaryCalculator() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-300 mb-3 uppercase tracking-wider">
+                <label className="block text-sm font-semibold text-slate-700 dark:text-gray-300 mb-3 uppercase tracking-wider">
                   {t.calculator.additionalSkills}
                 </label>
                 <div className="space-y-3">
@@ -205,7 +205,7 @@ export default function SalaryCalculator() {
                         className={`w-full flex items-center gap-4 p-3 rounded-xl text-left border transition-colors ${
                           selected
                             ? 'bg-emerald-500/10 border-emerald-400/40'
-                            : 'bg-white/5 border-white/5 hover:bg-white/10'
+                            : 'bg-slate-50 dark:bg-white/5 border-gray-200 dark:border-white/5 hover:bg-slate-100 dark:hover:bg-white/10'
                         }`}
                       >
                         <div
@@ -220,10 +220,10 @@ export default function SalaryCalculator() {
                           )}
                         </div>
                         <div>
-                          <div className="text-gray-200 font-medium text-sm">
+                          <div className="text-slate-900 dark:text-gray-200 font-medium text-sm">
                             {skill.labels?.[language] || skill.labels?.uz}
                           </div>
-                          <div className="text-xs text-gray-500">
+                          <div className="text-xs text-slate-600 dark:text-gray-500">
                             +{Math.round(skill.percentBonus * 100)}% {skill.flatBonus ? `+ $${skill.flatBonus}` : ''}
                           </div>
                         </div>
@@ -231,7 +231,7 @@ export default function SalaryCalculator() {
                     );
                   })}
                 </div>
-                <p className="mt-3 text-xs text-gray-500">{ui.skillsHint}</p>
+                <p className="mt-3 text-xs text-slate-600 dark:text-gray-500">{ui.skillsHint}</p>
               </div>
 
               <button
@@ -243,29 +243,29 @@ export default function SalaryCalculator() {
               </button>
             </div>
 
-            <div className="lg:col-span-7 flex flex-col items-center justify-center bg-gradient-to-br from-[#0f172a] to-[#1e1e2f] border border-white/10 rounded-3xl p-10 shadow-2xl relative overflow-hidden">
+            <div className="lg:col-span-7 flex flex-col items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200 dark:from-[#0f172a] dark:to-[#1e1e2f] border border-gray-300 dark:border-white/10 rounded-3xl p-10 shadow-2xl relative overflow-hidden">
               <div className="absolute top-[-50px] right-[-50px] w-64 h-64 bg-[#e81cff]/20 rounded-full blur-[80px]"></div>
               <div className="absolute bottom-[-50px] left-[-50px] w-64 h-64 bg-[#38bdf8]/20 rounded-full blur-[80px]"></div>
 
-              <h2 className="text-xl text-gray-400 font-semibold mb-2 relative z-10">{ui.estimatedSalary}</h2>
+              <h2 className="text-xl text-slate-600 dark:text-gray-400 font-semibold mb-2 relative z-10">{ui.estimatedSalary}</h2>
 
               <div className="flex items-end gap-2 mb-4 relative z-10 flex-wrap justify-center">
-                <div className="text-5xl sm:text-6xl md:text-7xl font-black bg-clip-text text-transparent bg-gradient-to-r from-[#38bdf8] via-[#8b5cf6] to-[#e81cff] drop-shadow-lg">
+                <div className="text-5xl sm:text-6xl md:text-7xl font-black bg-clip-text text-transparent bg-gradient-to-r from-[#0284c7] via-[#7c3aed] to-[#c026d3] dark:from-[#38bdf8] dark:via-[#8b5cf6] dark:to-[#e81cff] drop-shadow-lg">
                   ${calculatedSalary.estimate}
                 </div>
-                <span className="text-2xl text-gray-400 font-bold mb-2">{ui.usdPerMonth}</span>
+                <span className="text-2xl text-slate-700 dark:text-gray-400 font-bold mb-2">{ui.usdPerMonth}</span>
               </div>
 
-              <p className="text-sm text-gray-400 mb-10 relative z-10">
+              <p className="text-sm text-slate-600 dark:text-gray-400 mb-10 relative z-10">
                 {ui.salaryRange}: ${calculatedSalary.range[0]} - ${calculatedSalary.range[1]}
               </p>
 
               <div className="w-full max-w-lg mb-8 relative z-10">
-                <div className="flex justify-between text-xs text-gray-500 font-bold mb-2 uppercase tracking-widest">
+                <div className="flex justify-between text-xs text-slate-500 font-bold mb-2 uppercase tracking-widest">
                   <span>{ui.zero}</span>
                   <span>{ui.maxSector}</span>
                 </div>
-                <div className="h-6 bg-black/50 border border-white/10 rounded-full overflow-hidden shadow-inner p-1 relative">
+                <div className="h-6 bg-slate-300/50 dark:bg-black/50 border border-gray-300 dark:border-white/10 rounded-full overflow-hidden shadow-inner p-1 relative">
                   <motion.div
                     className="h-full bg-gradient-to-r from-[#38bdf8] to-[#e81cff] rounded-full relative overflow-hidden"
                     initial={{ width: 0 }}
@@ -280,7 +280,7 @@ export default function SalaryCalculator() {
                   </motion.div>
                 </div>
                 <div className="mt-4 text-center px-4">
-                  <p className="text-sm text-gray-400 font-medium">{t.calculator.disclaimer}</p>
+                  <p className="text-sm text-slate-600 dark:text-gray-400 font-medium">{t.calculator.disclaimer}</p>
                 </div>
               </div>
             </div>
@@ -288,8 +288,8 @@ export default function SalaryCalculator() {
 
           <div className="mt-20">
             <div className="text-center mb-10">
-              <h2 className="text-3xl font-bold text-white mb-3">{t.calculator.recommendationsTitle}</h2>
-              <p className="text-gray-400 max-w-2xl mx-auto">{t.calculator.recommendationsDesc}</p>
+              <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-3">{t.calculator.recommendationsTitle}</h2>
+              <p className="text-slate-600 dark:text-gray-400 max-w-2xl mx-auto">{t.calculator.recommendationsDesc}</p>
             </div>
 
             <div className="grid gap-6 auto-rows-fr md:grid-cols-2 lg:grid-cols-4">
@@ -306,11 +306,11 @@ export default function SalaryCalculator() {
                     <Link to={`/university/${uni.id}`} className="block h-full group/card">
                       <UniversityCard
                         universityId={uni.id}
-                        title={uni.name}
-                        location={uni.location}
+                        title={uni[`name_${language}`]}
+                        location={uni[`location_${language}`]}
                         image={uni.images[0]}
-                        description={uni.fullDescription}
-                        tags={uni.faculties.slice(0, 2)}
+                        description={uni[`fullDescription_${language}`]}
+                        tags={uni[`faculties_${language}`].slice(0, 2)}
                         contractYear={uni.contract_year}
                         contractMonth={uni.contract_month}
                       />
@@ -320,7 +320,7 @@ export default function SalaryCalculator() {
               </AnimatePresence>
             </div>
             {matchedUnis.length === 0 && (
-              <div className="text-center p-10 bg-white/5 border border-white/10 rounded-2xl">
+              <div className="text-center p-10 bg-slate-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl text-slate-800 dark:text-white">
                 {t.calculator.notFound}
               </div>
             )}

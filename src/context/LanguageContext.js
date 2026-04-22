@@ -4,6 +4,46 @@ const LanguageContext = createContext(null);
 
 export const translations = {
   uz: {
+    about: {
+      heroTitle: 'University.uz - Bizning Tarix va Missiya',
+      heroDesc: "Biz shunchaki ma'lumotlar bazasi emasmiz. Biz talabalarning orzularini ro'yobga chiqarish va ularga eng to'g'ri yo'lni ko'rsatish uchun yaratilgan innovatsion platformamiz.",
+      storyTitle: 'Loyihaning Maqsadi va Tarixi',
+      storyP1: "University.uz loyihasi 2024-yilda ta'lim sohasidagi xizmatlarni raqamlashtirish va yoshlarimizning oliy ta'lim muassasalariga kirish jarayonini osonlashtirish maqsadida yaratildi. Bugungi kunda talabalar uchun minglab universitetlar ichidan o'zlariga mosini tanlash juda qiyin masalaga aylangan.",
+      storyP2: "Bizning tizim barcha ochiq ma'lumotlar va universitet darchalaridagi eng saralangan jihatlarni tortib, yagona interaktiv ma'lumotlar bazasiga joylashtiradi. Platformada 15 dan ortiq yetakchi universitetlarning reytingi, narx siyosati, yotoqxonasi va fakultetlari bir joyda qulay shaklda ifodalangan.",
+      storyP3: "Asosiy maqsadimiz - universitet haqida ishonchli vizual va matnli ma'lumotlarni onlayn taqdim etish orqali abituriyentlarning hamda ularning ota-onalarining vaqtini va mablag'ini tejashdir.",
+      valuesTitle: 'Bizning Qadriyatlar',
+      values: [
+        {
+          title: 'Shaffoflik',
+          desc: "Barcha ma'lumotlar, kontrakt narxlari va reytinglar hech qanday yashirin unsurlarsiz ochiq taqdim etiladi.",
+          color: '#38bdf8',
+          icon: 'M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z',
+        },
+        {
+          title: 'Ishonch',
+          desc: "Ma'lumotlar to'g'ridan-to'g'ri rasmiy manbalarga asoslanadi va har chorakda qat'iy tahrirlab boriladi.",
+          color: '#10b981',
+          icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+        },
+        {
+          title: 'Kelajak',
+          desc: "Biz yoshlarning kelajakdagi faoliyatiga zamin tayyorlaymiz va zamonaviy mutaxassisliklarni targ'ib qilamiz.",
+          color: '#e81cff',
+          icon: 'M13 10V3L4 14h7v7l9-11h-7z',
+        },
+        {
+          title: 'Innovatsiya',
+          desc: 'Har bir jarayonimiz eng zamonaviy IT texnologiyalar bilan boyitilgan, eng tezkor va qulay interfeysga ega.',
+          color: '#f59e0b',
+          icon: 'M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z',
+        },
+      ],
+      authorTitle: 'Loyiha muallifi',
+      resultsBadge: 'Xulosa',
+      resultsTitle: 'Natijalar',
+      resultsDesc: "University.uz nafaqat ma'lumot, balki haqiqiy yechim beradi. Platforma yordamida yuzlab abituriyentlar o'z maqsadlariga mos keladigan eng to'g'ri va nufuzli ta'lim dargohini tez topishga muvaffaq bo'lmoqda.",
+      ctaButton: "Universitetlarni Ko'rish",
+    },
     navbar: {
       brandTagline: 'Premium taʼlim platformasi',
       home: 'Bosh sahifa',
@@ -146,6 +186,46 @@ export const translations = {
     }
   },
   ru: {
+    about: {
+      heroTitle: 'University.uz - Наша История и Миссия',
+      heroDesc: 'Мы не просто база данных. Мы - инновационная платформа, созданная для того, чтобы воплощать мечты студентов в жизнь и указывать им правильный путь.',
+      storyTitle: 'Цель и История Проекта',
+      storyP1: 'Проект University.uz был запущен в 2024 году с целью цифровизации образовательных услуг и облегчения процесса поступления молодежи в вузы. Сегодня студентам очень сложно выбрать подходящий вариант среди тысяч университетов.',
+      storyP2: 'Наша система собирает важные аспекты из открытых данных и формирует единую интерактивную базу. На платформе удобно представлены рейтинги, цены на контракты, общежития и факультеты более 15 лучших университетов.',
+      storyP3: 'Наша главная цель - сэкономить время и деньги абитуриентов и их родителей, предоставляя достоверную визуальную и текстовую информацию об университетах онлайн.',
+      valuesTitle: 'Наши Ценности',
+      values: [
+        {
+          title: 'Прозрачность',
+          desc: 'Вся информация, цены на контракты и рейтинги предоставляются открыто, без скрытых деталей.',
+          color: '#38bdf8',
+          icon: 'M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z',
+        },
+        {
+          title: 'Доверие',
+          desc: 'Данные основаны на официальных источниках и регулярно обновляются.',
+          color: '#10b981',
+          icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+        },
+        {
+          title: 'Будущее',
+          desc: 'Мы создаем основу для будущей карьеры молодежи и продвигаем современные специальности.',
+          color: '#e81cff',
+          icon: 'M13 10V3L4 14h7v7l9-11h-7z',
+        },
+        {
+          title: 'Инновации',
+          desc: 'Каждый наш процесс усилен современными IT-технологиями и удобным интерфейсом.',
+          color: '#f59e0b',
+          icon: 'M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z',
+        },
+      ],
+      authorTitle: 'Автор проекта',
+      resultsBadge: 'Итог',
+      resultsTitle: 'Результаты',
+      resultsDesc: 'University.uz дает не только информацию, но и готовое решение. С нашей платформой сотни абитуриентов быстро находят наиболее подходящее и престижное учебное заведение.',
+      ctaButton: 'Посмотреть университеты',
+    },
     navbar: {
       brandTagline: 'Премиальная образовательная платформа',
       home: 'Главная',

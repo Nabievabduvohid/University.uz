@@ -91,11 +91,10 @@ export default function Hero() {
         >
           <div
             ref={badgeRef}
-            className="mb-8 inline-flex min-h-11 items-center gap-3 rounded-full border px-5 py-3 text-sm font-medium backdrop-blur-xl"
+            className="mb-8 inline-flex min-h-11 items-center gap-3 rounded-full border px-5 py-3 text-sm font-medium backdrop-blur-xl text-slate-600 dark:text-gray-400"
             style={{
               borderColor: 'var(--color-border)',
               backgroundColor: 'var(--color-bg-elevated)',
-              color: 'var(--color-text-soft)',
             }}
           >
             <span className="h-2.5 w-2.5 rounded-full bg-[#7bf7ff] shadow-[0_0_18px_rgba(123,247,255,0.9)]" />
@@ -103,8 +102,8 @@ export default function Hero() {
           </div>
 
           <h1
-            className="max-w-full whitespace-normal break-keep text-2xl font-semibold leading-[1.1] tracking-[-0.05em] [overflow-wrap:normal] sm:text-4xl lg:text-5xl"
-            style={{ color: 'var(--color-text)', wordBreak: 'keep-all', overflowWrap: 'normal' }}
+            className="max-w-full whitespace-normal break-keep text-2xl font-semibold leading-[1.1] tracking-[-0.05em] [overflow-wrap:normal] sm:text-4xl lg:text-5xl text-slate-900 dark:text-white"
+            style={{ wordBreak: 'keep-all', overflowWrap: 'normal' }}
           >
             {words.map((word) => (
               <span
@@ -130,8 +129,7 @@ export default function Hero() {
 
           <motion.p
             variants={itemVariant}
-            className="mt-6 max-w-xl text-sm leading-6 sm:text-base"
-            style={{ color: 'var(--color-text-muted)' }}
+            className="mt-6 max-w-xl text-sm leading-6 sm:text-base text-slate-600 dark:text-gray-400"
           >
             {t.hero.description}
           </motion.p>
@@ -148,11 +146,10 @@ export default function Hero() {
             </a>
             <a
               href="#footer"
-              className="inline-flex min-h-12 items-center justify-center rounded-full border px-5 text-sm font-semibold backdrop-blur-xl transition duration-300 hover:border-[#79f7ff]/50"
+              className="inline-flex min-h-12 items-center justify-center rounded-full border px-5 text-sm font-semibold backdrop-blur-xl transition duration-300 hover:border-[#79f7ff]/50 text-slate-900 dark:text-white"
               style={{
                 borderColor: 'var(--color-border)',
                 backgroundColor: 'var(--color-bg-elevated)',
-                color: 'var(--color-text)',
               }}
             >
               {t.hero.secondaryCta}
@@ -172,10 +169,10 @@ export default function Hero() {
                   backgroundColor: 'var(--color-bg-elevated)',
                 }}
               >
-                <div className="text-2xl font-semibold" style={{ color: 'var(--color-text)' }}>
+                <div className="text-2xl font-semibold text-slate-900 dark:text-white">
                   {value}
                 </div>
-                <div className="mt-1 text-sm" style={{ color: 'var(--color-text-muted)' }}>
+                <div className="mt-1 text-sm text-slate-600 dark:text-gray-400">
                   {label}
                 </div>
               </div>
@@ -212,10 +209,10 @@ export default function Hero() {
                 }}
               >
                 <div>
-                  <p className="text-xs uppercase tracking-[0.28em]" style={{ color: 'var(--color-text-muted)' }}>
+                  <p className="text-xs uppercase tracking-[0.28em] text-slate-600 dark:text-gray-400">
                     {t.hero.liveRanking}
                   </p>
-                  <p className="mt-1 text-sm font-medium" style={{ color: 'var(--color-text)' }}>
+                  <p className="mt-1 text-sm font-medium text-slate-900 dark:text-white">
                     {t.hero.topDestinations}
                   </p>
                 </div>
@@ -241,10 +238,10 @@ export default function Hero() {
                     }}
                   >
                     <div>
-                      <p className="text-xs uppercase tracking-[0.24em]" style={{ color: 'var(--color-text-muted)' }}>
+                      <p className="text-xs uppercase tracking-[0.24em] text-slate-600 dark:text-gray-400">
                         {city}
                       </p>
-                      <p className="mt-1 text-sm font-medium" style={{ color: 'var(--color-text)' }}>
+                      <p className="mt-1 text-sm font-medium text-slate-900 dark:text-white">
                         {track}
                       </p>
                     </div>

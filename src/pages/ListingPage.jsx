@@ -7,10 +7,12 @@ import Navbar from '../components/Navbar';
 import UniversityCard from '../components/cards/UniversityCard';
 import universities from '../data/universities';
 import { useCompare } from '../context/CompareContext';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function ListingPage() {
   const [sortType, setSortType] = useState('default');
   const { compareList, addToCompare, removeFromCompare, isInCompare } = useCompare();
+  const { language } = useLanguage();
 
   const sortedUniversities = useMemo(() => {
     const list = [...universities];
@@ -23,7 +25,7 @@ export default function ListingPage() {
       case 'priceDesc':
         return list.sort((a, b) => b.contract_year - a.contract_year);
       case 'alpha':
-        return list.sort((a, b) => a.name.localeCompare(b.name));
+        return list.sort((a, b) => a[`name_${language}`].localeCompare(b[`name_${language}`]));
       default:
         return list; // Original order
     }
@@ -42,10 +44,10 @@ export default function ListingPage() {
               <span className="text-sm uppercase tracking-[0.32em] text-[#7bf7ff]">
                 University Catalog
               </span>
-              <h1 className="mt-4 text-4xl font-semibold tracking-[-0.04em] text-white sm:text-5xl">
+              <h1 className="mt-4 text-4xl font-semibold tracking-[-0.04em] text-slate-900 dark:text-white sm:text-5xl">
                 O‘zbekiston va xalqaro universitetlar katalogi
               </h1>
-              <p className="mt-5 text-base leading-8 text-slate-400 sm:text-lg">
+              <p className="mt-5 text-base leading-8 text-slate-600 dark:text-slate-400 sm:text-lg">
                 Har bir universitet bo‘yicha asosiy yo‘nalishlar, joylashuv va kontrakt
                 ma’lumotlarini ko‘rib chiqing. Batafsil sahifa orqali to‘liq tavsif va hujjat
                 topshirish havolasiga o‘ting.
@@ -57,13 +59,13 @@ export default function ListingPage() {
                 <select 
                   value={sortType} 
                   onChange={(e) => setSortType(e.target.value)}
-                  className="appearance-none bg-white/5 border border-white/20 text-white rounded-xl px-5 py-3 pr-10 outline-none focus:ring-2 focus:ring-[#38bdf8] backdrop-blur-md cursor-pointer transition-all w-60"
+                  className="appearance-none bg-white dark:bg-white/5 border border-gray-300 dark:border-white/20 text-slate-900 dark:text-white rounded-xl px-5 py-3 pr-10 outline-none focus:ring-2 focus:ring-[#38bdf8] backdrop-blur-md cursor-pointer transition-all w-60"
                 >
-                  <option value="default" className="bg-gray-900 text-white">Standart</option>
-                  <option value="ratingDesc" className="bg-gray-900 text-white">Reyting bo'yicha (Yuqori)</option>
-                  <option value="priceAsc" className="bg-gray-900 text-white">Narx bo'yicha (Arzon ↑)</option>
-                  <option value="priceDesc" className="bg-gray-900 text-white">Narx bo'yicha (Qimmat ↓)</option>
-                  <option value="alpha" className="bg-gray-900 text-white">Alifbo bo'yicha (A-Z)</option>
+                  <option value="default" className="bg-gray-100 dark:bg-gray-900 text-slate-900 dark:text-white">Standart</option>
+                  <option value="ratingDesc" className="bg-gray-100 dark:bg-gray-900 text-slate-900 dark:text-white">Reyting bo'yicha (Yuqori)</option>
+                  <option value="priceAsc" className="bg-gray-100 dark:bg-gray-900 text-slate-900 dark:text-white">Narx bo'yicha (Arzon ↑)</option>
+                  <option value="priceDesc" className="bg-gray-100 dark:bg-gray-900 text-slate-900 dark:text-white">Narx bo'yicha (Qimmat ↓)</option>
+                  <option value="alpha" className="bg-gray-100 dark:bg-gray-900 text-slate-900 dark:text-white">Alifbo bo'yicha (A-Z)</option>
                 </select>
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-[#38bdf8]">
                   <svg className="fill-current h-4 w-4" viewBox="0 0 20 20">
@@ -88,11 +90,11 @@ export default function ListingPage() {
                     <Link to={`/university/${university.id}`} className="block h-full">
                       <UniversityCard
                         universityId={university.id}
-                        title={university.name}
-                        location={university.location}
+                        title={university[`name_${language}`]}
+                        location={university[`location_${language}`]}
                         image={university.images[0]}
-                        description={university.fullDescription}
-                        tags={university.faculties.slice(0, 3)}
+                        description={university[`fullDescription_${language}`]}
+                        tags={university[`faculties_${language}`].slice(0, 3)}
                         contractYear={university.contract_year}
                         contractMonth={university.contract_month}
                       />

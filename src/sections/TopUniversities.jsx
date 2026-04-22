@@ -6,7 +6,7 @@ import universities from '../data/universities';
 import { useLanguage } from '../context/LanguageContext';
 
 export default function TopUniversities() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   // Sort by rating descending and take top 5
   const topUniversities = [...universities]
@@ -14,7 +14,7 @@ export default function TopUniversities() {
     .slice(0, 5);
 
   return (
-    <section className="relative py-20 px-4 sm:px-6 lg:px-10 overflow-hidden text-white">
+    <section className="relative py-20 px-4 sm:px-6 lg:px-10 overflow-hidden text-slate-900 dark:text-white">
       {/* Background decorations */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-[#38bdf8] rounded-full mix-blend-screen filter blur-[100px] opacity-10"></div>
       
@@ -34,7 +34,7 @@ export default function TopUniversities() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-gray-400 max-w-2xl text-lg"
+              className="text-slate-700 dark:text-gray-400 max-w-2xl text-lg"
             >
               {t.topUniversities.desc}
             </motion.p>
@@ -54,11 +54,11 @@ export default function TopUniversities() {
               <Link to={`/university/${uni.id}`} className="block h-full relative">
                 <UniversityCard
                   universityId={uni.id}
-                  title={uni.name}
-                  location={uni.location}
+                  title={uni[`name_${language}`]}
+                  location={uni[`location_${language}`]}
                   image={uni.images[0]}
-                  description={uni.fullDescription}
-                  tags={uni.faculties.slice(0, 3)}
+                  description={uni[`fullDescription_${language}`]}
+                  tags={uni[`faculties_${language}`].slice(0, 3)}
                   contractYear={uni.contract_year}
                   contractMonth={uni.contract_month}
                 />
@@ -72,8 +72,8 @@ export default function TopUniversities() {
                 </div>
                 
                 {/* Hover Batafsil overlay (optional enhancement, since cards might just be clickable) */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-[var(--card-radius,_1.5rem)] flex items-end p-6 z-10">
-                  <span className="text-[#38bdf8] font-medium flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/50 dark:from-[#0f172a] dark:via-[#0f172a]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-[var(--card-radius,_1.5rem)] flex items-end p-6 z-10">
+                  <span className="text-[#38bdf8] font-bold flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
                     {t.topUniversities.moreInfo} 
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                   </span>
@@ -92,7 +92,7 @@ export default function TopUniversities() {
         >
           <Link
             to="/universities"
-            className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 font-semibold text-white transition-all duration-300 ease-in-out bg-black/40 border border-[#38bdf8]/30 rounded-full hover:bg-black/60 overflow-hidden"
+            className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 font-semibold text-slate-900 dark:text-white transition-all duration-300 ease-in-out bg-transparent border border-[#38bdf8]/50 hover:bg-[#38bdf8]/10 rounded-full overflow-hidden"
           >
             <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-[#38bdf8]"></span>
             <span className="absolute inset-0 w-full h-full border-2 border-transparent rounded-full shadow-[0_0_20px_rgba(56,189,248,0.5)] group-hover:shadow-[0_0_40px_rgba(56,189,248,0.8)] transition-shadow duration-300"></span>

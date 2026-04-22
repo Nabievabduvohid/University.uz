@@ -7,102 +7,9 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import BackgroundGlow from '../components/BackgroundGlow';
 
-const localTexts = {
-  uz: {
-    heroTitle: 'University.uz - Bizning Tarix va Missiya',
-    heroDesc:
-      "Biz shunchaki ma'lumotlar bazasi emasmiz. Biz talabalarning orzularini ro'yobga chiqarish va ularga eng to'g'ri yo'lni ko'rsatish uchun yaratilgan innovatsion platformamiz.",
-    storyTitle: 'Loyihaning Maqsadi va Tarixi',
-    storyP1:
-      "University.uz loyihasi 2024-yilda ta'lim sohasidagi xizmatlarni raqamlashtirish va yoshlarimizning oliy ta'lim muassasalariga kirish jarayonini osonlashtirish maqsadida yaratildi. Bugungi kunda talabalar uchun minglab universitetlar ichidan o'zlariga mosini tanlash juda qiyin masalaga aylangan.",
-    storyP2:
-      "Bizning tizim barcha ochiq ma'lumotlar va universitet darchalaridagi eng saralangan jihatlarni tortib, yagona interaktiv ma'lumotlar bazasiga joylashtiradi. Platformada 15 dan ortiq yetakchi universitetlarning reytingi, narx siyosati, yotoqxonasi va fakultetlari bir joyda qulay shaklda ifodalangan.",
-    storyP3:
-      "Asosiy maqsadimiz - universitet haqida ishonchli vizual va matnli ma'lumotlarni onlayn taqdim etish orqali abituriyentlarning hamda ularning ota-onalarining vaqtini va mablag'ini tejashdir.",
-    valuesTitle: 'Bizning Qadriyatlar',
-    values: [
-      {
-        title: 'Shaffoflik',
-        desc: "Barcha ma'lumotlar, kontrakt narxlari va reytinglar hech qanday yashirin unsurlarsiz ochiq taqdim etiladi.",
-        color: '#38bdf8',
-        icon: 'M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z',
-      },
-      {
-        title: 'Ishonch',
-        desc: "Ma'lumotlar to'g'ridan-to'g'ri rasmiy manbalarga asoslanadi va har chorakda qat'iy tahrirlab boriladi.",
-        color: '#10b981',
-        icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
-      },
-      {
-        title: 'Kelajak',
-        desc: "Biz yoshlarning kelajakdagi faoliyatiga zamin tayyorlaymiz va zamonaviy mutaxassisliklarni targ'ib qilamiz.",
-        color: '#e81cff',
-        icon: 'M13 10V3L4 14h7v7l9-11h-7z',
-      },
-      {
-        title: 'Innovatsiya',
-        desc: 'Har bir jarayonimiz eng zamonaviy IT texnologiyalar bilan boyitilgan, eng tezkor va qulay interfeysga ega.',
-        color: '#f59e0b',
-        icon: 'M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z',
-      },
-    ],
-    authorTitle: 'Loyiha muallifi',
-    resultsBadge: 'Xulosa',
-    resultsTitle: 'Natijalar',
-    resultsDesc:
-      "University.uz nafaqat ma'lumot, balki haqiqiy yechim beradi. Platforma yordamida yuzlab abituriyentlar o'z maqsadlariga mos keladigan eng to'g'ri va nufuzli ta'lim dargohini tez topishga muvaffaq bo'lmoqda.",
-    ctaButton: "Universitetlarni Ko'rish",
-  },
-  ru: {
-    heroTitle: 'University.uz - Наша История и Миссия',
-    heroDesc:
-      'Мы не просто база данных. Мы - инновационная платформа, созданная для того, чтобы воплощать мечты студентов в жизнь и указывать им правильный путь.',
-    storyTitle: 'Цель и История Проекта',
-    storyP1:
-      'Проект University.uz был запущен в 2024 году с целью цифровизации образовательных услуг и облегчения процесса поступления молодежи в вузы. Сегодня студентам очень сложно выбрать подходящий вариант среди тысяч университетов.',
-    storyP2:
-      'Наша система собирает важные аспекты из открытых данных и формирует единую интерактивную базу. На платформе удобно представлены рейтинги, цены на контракты, общежития и факультеты более 15 лучших университетов.',
-    storyP3:
-      'Наша главная цель - сэкономить время и деньги абитуриентов и их родителей, предоставляя достоверную визуальную и текстовую информацию об университетах онлайн.',
-    valuesTitle: 'Наши Ценности',
-    values: [
-      {
-        title: 'Прозрачность',
-        desc: 'Вся информация, цены на контракты и рейтинги предоставляются открыто, без скрытых деталей.',
-        color: '#38bdf8',
-        icon: 'M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z',
-      },
-      {
-        title: 'Доверие',
-        desc: 'Данные основаны на официальных источниках и регулярно обновляются.',
-        color: '#10b981',
-        icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
-      },
-      {
-        title: 'Будущее',
-        desc: 'Мы создаем основу для будущей карьеры молодежи и продвигаем современные специальности.',
-        color: '#e81cff',
-        icon: 'M13 10V3L4 14h7v7l9-11h-7z',
-      },
-      {
-        title: 'Инновации',
-        desc: 'Каждый наш процесс усилен современными IT-технологиями и удобным интерфейсом.',
-        color: '#f59e0b',
-        icon: 'M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z',
-      },
-    ],
-    authorTitle: 'Автор проекта',
-    resultsBadge: 'Итог',
-    resultsTitle: 'Результаты',
-    resultsDesc:
-      'University.uz дает не только информацию, но и готовое решение. С нашей платформой сотни абитуриентов быстро находят наиболее подходящее и престижное учебное заведение.',
-    ctaButton: 'Посмотреть университеты',
-  },
-};
-
 export default function AboutPage() {
-  const { language } = useLanguage();
-  const t = localTexts[language] || localTexts.uz;
+  const { language, t: globalT } = useLanguage();
+  const t = globalT.about;
   const pageRef = useRef(null);
 
   useEffect(() => {
@@ -167,10 +74,10 @@ export default function AboutPage() {
               variants={fadeUpVariant}
               className="relative z-10 text-center max-w-4xl mx-auto gsap-fade-up"
             >
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200 to-gray-500 drop-shadow-lg">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-6 bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-500 dark:from-white dark:via-gray-200 dark:to-gray-500 drop-shadow-sm dark:drop-shadow-lg">
                 {t.heroTitle}
               </h1>
-              <p className="text-xl md:text-2xl text-gray-300 leading-relaxed font-medium mx-auto px-4 max-w-3xl">
+              <p className="text-xl md:text-2xl text-slate-700 dark:text-gray-300 leading-relaxed font-medium mx-auto px-4 max-w-3xl">
                 {t.heroDesc}
               </p>
             </motion.div>
@@ -186,9 +93,9 @@ export default function AboutPage() {
             >
               <div className="absolute top-0 right-0 w-full h-1 bg-gradient-to-r from-transparent via-[#38bdf8] to-transparent opacity-50"></div>
 
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">{t.storyTitle}</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-8">{t.storyTitle}</h2>
 
-              <div className="space-y-6 text-lg text-gray-300/90 leading-relaxed text-justify">
+              <div className="space-y-6 text-lg text-slate-700 dark:text-gray-300/90 leading-relaxed text-justify">
                 <p>{t.storyP1}</p>
                 <p className="border-l-4 border-[#38bdf8] pl-6 bg-[#38bdf8]/5 py-3 rounded-r-xl">{t.storyP2}</p>
                 <p>{t.storyP3}</p>
@@ -198,7 +105,7 @@ export default function AboutPage() {
 
           <section className="py-20 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto">
             <div className="text-center mb-16 gsap-fade-up">
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">{t.valuesTitle}</h2>
+              <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">{t.valuesTitle}</h2>
             </div>
 
             <motion.div
@@ -228,8 +135,8 @@ export default function AboutPage() {
                     </svg>
                   </div>
 
-                  <h3 className="text-2xl font-bold mb-3 text-white">{val.title}</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">{val.desc}</p>
+                  <h3 className="text-2xl font-bold mb-3 text-slate-900 dark:text-white">{val.title}</h3>
+                  <p className="text-slate-600 dark:text-gray-400 text-sm leading-relaxed">{val.desc}</p>
                 </motion.div>
               ))}
             </motion.div>
@@ -271,8 +178,8 @@ export default function AboutPage() {
               <div className="inline-block px-4 py-1 mb-6 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-semibold tracking-widest uppercase">
                 {t.resultsBadge}
               </div>
-              <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-8">{t.resultsTitle}</h2>
-              <p className="text-xl md:text-2xl text-gray-300/80 leading-relaxed mb-12">{t.resultsDesc}</p>
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white mb-8">{t.resultsTitle}</h2>
+              <p className="text-xl md:text-2xl text-slate-700 dark:text-gray-300/80 leading-relaxed mb-12">{t.resultsDesc}</p>
 
               <Link
                 to="/universities"
