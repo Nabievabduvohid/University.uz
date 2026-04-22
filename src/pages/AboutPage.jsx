@@ -46,15 +46,7 @@ const localTexts = {
         icon: 'M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z',
       },
     ],
-    teamTitle: 'Bizning Jamoa',
-    teamDesc:
-      "Loyihamiz ortida ta'lim va IT sohasida uzoq yillik tajribaga ega bo'lgan fidoiy jamoa turibdi. Muhandislar, UI/UX dizaynerlar va metodistlar platformani har kuni vizual va texnik jihatdan yaxshilab boradi.",
-    teamMembers: [
-      { name: 'Azizbek Karimov', role: 'Frontend Engineer' },
-      { name: 'Madina Yuldasheva', role: 'UI/UX Designer' },
-      { name: 'Jasur Raximov', role: 'Education Methodologist' },
-      { name: 'Nilufar Sobirova', role: 'Student Success Manager' },
-    ],
+    authorTitle: 'Loyiha muallifi',
     resultsBadge: 'Xulosa',
     resultsTitle: 'Natijalar',
     resultsDesc:
@@ -99,15 +91,7 @@ const localTexts = {
         icon: 'M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z',
       },
     ],
-    teamTitle: 'Наша Команда',
-    teamDesc:
-      'За проектом стоит самоотверженная команда с сильным опытом в образовании и IT. Инженеры, UI/UX дизайнеры и методисты ежедневно улучшают платформу с визуальной и технической стороны.',
-    teamMembers: [
-      { name: 'Азизбек Каримов', role: 'Frontend Engineer' },
-      { name: 'Мадина Юлдашева', role: 'UI/UX Designer' },
-      { name: 'Жасур Рахимов', role: 'Education Methodologist' },
-      { name: 'Нилуфар Собирова', role: 'Student Success Manager' },
-    ],
+    authorTitle: 'Автор проекта',
     resultsBadge: 'Итог',
     resultsTitle: 'Результаты',
     resultsDesc:
@@ -251,34 +235,28 @@ export default function AboutPage() {
             </motion.div>
           </section>
 
-          <section className="py-16 px-4 sm:px-6 lg:px-10 max-w-5xl mx-auto gsap-fade-up">
+          <section className="py-16 px-4 sm:px-6 lg:px-10 max-w-3xl mx-auto gsap-fade-up">
             <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
               variants={fadeUpVariant}
-              className="p-10 bg-gradient-to-br from-[#0f172a] to-black border border-white/10 rounded-[2rem] relative overflow-hidden"
+              className="p-10 bg-white dark:bg-black/30 backdrop-blur-2xl border border-gray-200 dark:border-white/10 rounded-2xl shadow-xl dark:shadow-[0_20px_50px_rgba(0,0,0,0.3)] relative overflow-hidden text-center mx-auto"
             >
-              <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-indigo-500/20 rounded-full blur-3xl"></div>
+              <div className="absolute top-0 right-0 w-full h-1 bg-gradient-to-r from-transparent via-[#38bdf8] to-transparent opacity-50"></div>
 
-              <div className="mb-10 max-w-2xl">
-                <h2 className="text-4xl font-bold text-white mb-6">{t.teamTitle}</h2>
-                <p className="text-lg text-gray-400 leading-relaxed">{t.teamDesc}</p>
-              </div>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">{t.authorTitle}</h2>
 
-              <div className="grid gap-6 md:grid-cols-2">
-                {t.teamMembers.map((member) => (
-                  <div
-                    key={member.name}
-                    className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-md shadow-xl"
-                  >
-                    <div className="mb-3 inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-[#38bdf8]/30 bg-[#38bdf8]/10 text-lg font-bold text-[#38bdf8]">
-                      {member.name.charAt(0)}
-                    </div>
-                    <h3 className="text-xl font-semibold text-white">{member.name}</h3>
-                    <p className="mt-2 text-sm uppercase tracking-[0.2em] text-gray-500">{member.role}</p>
-                  </div>
-                ))}
+              <div className="flex flex-col items-center justify-center">
+                <div className="mb-4 inline-flex h-20 w-20 items-center justify-center rounded-2xl border-2 border-[#38bdf8]/30 bg-[#38bdf8]/10 text-3xl font-bold text-[#38bdf8] shadow-lg">
+                  N
+                </div>
+                <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">Nabiev Abduvohid</h3>
+                <p className="mt-2 text-sm uppercase tracking-[0.2em] text-[#38bdf8] font-medium">Full-stack Developer & Designer</p>
+                <div className="w-16 h-px bg-gray-300 dark:bg-gray-700 my-6"></div>
+                <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl text-center italic">
+                  "Ushbu platforma O'zbekistondagi abituriyentlar uchun oliy ta'lim muassasalarini tanlash, kontrakt narxlari bilan tanishish va o'z imkoniyatlarini kalkulyator orqali hisoblashda yordam berish uchun yaratilgan shaxshiy loyihadir."
+                </p>
               </div>
             </motion.div>
           </section>
