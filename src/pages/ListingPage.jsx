@@ -29,7 +29,7 @@ export default function ListingPage() {
       default:
         return list; // Original order
     }
-  }, [sortType]);
+  }, [sortType, language]);
 
   return (
     <div className="relative min-h-screen overflow-x-clip bg-[var(--color-bg)] text-[var(--color-text)] transition-colors duration-500">

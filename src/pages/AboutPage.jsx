@@ -159,10 +159,10 @@ export default function AboutPage() {
                   N
                 </div>
                 <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">Nabiev Abduvohid</h3>
-                <p className="mt-2 text-sm uppercase tracking-[0.2em] text-[#38bdf8] font-medium">Full-stack Developer & Designer</p>
+                <p className="mt-2 text-sm uppercase tracking-[0.2em] text-[#38bdf8] font-medium">{t.authorSub}</p>
                 <div className="w-16 h-px bg-gray-300 dark:bg-gray-700 my-6"></div>
                 <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl text-center italic">
-                  "Ushbu platforma O'zbekistondagi abituriyentlar uchun oliy ta'lim muassasalarini tanlash, kontrakt narxlari bilan tanishish va o'z imkoniyatlarini kalkulyator orqali hisoblashda yordam berish uchun yaratilgan shaxshiy loyihadir."
+                  {t.authorQuote}
                 </p>
               </div>
             </motion.div>

@@ -227,7 +227,7 @@ export default function Hero() {
               </div>
 
               <div className="absolute bottom-6 left-6 right-6 z-20 grid gap-3">
-                {t.hero.destinations.map(([city, track, score]) => (
+                {t.hero.topDirections.map(([city, track, score]) => (
                   <div
                     key={track}
                     className="flex items-center justify-between rounded-2xl border px-4 py-3 backdrop-blur-xl"
