@@ -38,9 +38,11 @@ const UniversityCard = ({
   description,
   contractYear,
   contractMonth,
+  subjectsUz,
+  subjectsRu,
   className,
 }) => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const { isDark } = useTheme();
   const [isSaved, setIsSaved] = useState(false);
 
@@ -133,6 +135,19 @@ const UniversityCard = ({
           <h3 className="text-xl font-bold leading-snug tracking-wide text-slate-900 dark:text-white">
             {title}
           </h3>
+
+          {((language === 'uz' ? subjectsUz : subjectsRu) || []).length > 0 && (
+            <div className="mt-2 flex flex-wrap gap-2">
+              {(language === 'uz' ? subjectsUz : subjectsRu).map((subj, index) => (
+                <span
+                  key={index}
+                  className="bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 px-2 py-1 rounded-md text-[10px] font-medium"
+                >
+                  {subj}
+                </span>
+              ))}
+            </div>
+          )}
 
           {(yearlyContract || monthlyContract) && (
             <div className="mt-3 flex flex-wrap gap-2">

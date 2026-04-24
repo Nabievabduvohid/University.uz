@@ -61,6 +61,8 @@ export default function TopUniversities() {
                   tags={uni[`faculties_${language}`].slice(0, 3)}
                   contractYear={uni.contract_year}
                   contractMonth={uni.contract_month}
+                  subjectsUz={uni.subjects_uz}
+                  subjectsRu={uni.subjects_ru}
                 />
                 
                 {/* Rating Badge */}

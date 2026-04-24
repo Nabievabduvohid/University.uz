@@ -115,6 +115,23 @@ export default function DetailPage() {
 
                 <section className="detail-faculties rounded-[2rem] border border-white/10 bg-white/[0.05] p-7 backdrop-blur-2xl sm:p-8">
                   <span className="text-sm uppercase tracking-[0.28em] text-cyan-600 dark:text-[#7bf7ff]">
+                    Asosiy Fanlar
+                  </span>
+                  <div className="mt-6 flex flex-wrap gap-3">
+                    {(language === 'uz' ? university.subjects_uz : university.subjects_ru)?.map((subject) => (
+                      <div
+                        key={subject}
+                        className="inline-flex items-center gap-2 rounded-full border border-sky-200/50 dark:border-[#7bf7ff]/30 bg-sky-50 dark:bg-[#7bf7ff]/10 px-4 py-2 text-sm font-semibold text-sky-700 dark:text-[#7bf7ff]"
+                      >
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+                        {subject}
+                      </div>
+                    ))}
+                  </div>
+                </section>
+
+                <section className="detail-faculties rounded-[2rem] border border-white/10 bg-white/[0.05] p-7 backdrop-blur-2xl sm:p-8">
+                  <span className="text-sm uppercase tracking-[0.28em] text-cyan-600 dark:text-[#7bf7ff]">
                     Fakultetlar
                   </span>
                   <div className="mt-6 grid gap-3 sm:grid-cols-2">

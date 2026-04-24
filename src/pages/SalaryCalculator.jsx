@@ -313,6 +313,8 @@ export default function SalaryCalculator() {
                         tags={uni[`faculties_${language}`].slice(0, 2)}
                         contractYear={uni.contract_year}
                         contractMonth={uni.contract_month}
+                        subjectsUz={uni.subjects_uz}
+                        subjectsRu={uni.subjects_ru}
                       />
                     </Link>
                   </motion.div>

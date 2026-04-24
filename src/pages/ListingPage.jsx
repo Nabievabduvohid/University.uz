@@ -97,6 +97,8 @@ export default function ListingPage() {
                         tags={university[`faculties_${language}`].slice(0, 3)}
                         contractYear={university.contract_year}
                         contractMonth={university.contract_month}
+                        subjectsUz={university.subjects_uz}
+                        subjectsRu={university.subjects_ru}
                       />
                     </Link>
                     <button
