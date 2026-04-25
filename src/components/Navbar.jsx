@@ -27,7 +27,7 @@ export default function Navbar() {
         initial={{ opacity: 0, y: -18 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 md:gap-6 rounded-[2rem] sm:rounded-full border px-4 py-3 backdrop-blur-2xl md:px-6"
+        className="mx-auto flex w-full max-w-7xl items-center justify-between gap-2 rounded-[2rem] sm:rounded-full border px-4 py-3 backdrop-blur-2xl md:px-6"
         style={{
           borderColor: 'var(--color-border)',
           backgroundColor: 'var(--color-surface)',
@@ -36,135 +36,121 @@ export default function Navbar() {
             : '0 20px 60px rgba(148, 163, 184, 0.18)',
         }}
       >
-        <Link to="/" className="flex shrink-0 items-center justify-start group min-w-[180px] sm:min-w-[200px]">
-          <svg viewBox="0 0 280 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-9 sm:h-10 w-auto">
+        {/* LOGO QISMI: shrink-0 orqali o'lchamini saqlab qolamiz */}
+        <Link to="/" className="flex shrink-0 items-center group min-w-fit">
+          <svg viewBox="0 0 280 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-8 sm:h-10 w-auto">
             <defs>
               <linearGradient id="neonGlowLogo" x1="0%" y1="100%" x2="100%" y2="0%">
                 <stop offset="0%" stopColor={isDark ? "#6200EA" : "#1A237E"} />
                 <stop offset="100%" stopColor={isDark ? "#00E5FF" : "#40C4FF"} />
               </linearGradient>
             </defs>
-
             <g transform="translate(5, 5)">
-              <path d="M 25 35 C 15 25, 5 15, 0 5 C 10 10, 20 20, 25 30" stroke="url(#neonGlowLogo)" strokeWidth="2.5" strokeLinecap="round" className="transition-all duration-500 group-hover:stroke-[#00E5FF]"/>
-              <path d="M 25 45 C 10 35, 0 25, -5 15 C 5 20, 15 30, 25 40" stroke="url(#neonGlowLogo)" strokeWidth="2.5" strokeOpacity="0.5" strokeLinecap="round" className="transition-all duration-500 group-hover:stroke-[#6200EA]"/>
-              <path d="M 25 35 C 35 25, 45 15, 50 5 C 40 10, 30 20, 25 30" stroke="url(#neonGlowLogo)" strokeWidth="2.5" strokeLinecap="round" className="transition-all duration-500 group-hover:stroke-[#00E5FF]"/>
-              <path d="M 25 45 C 40 35, 50 25, 55 15 C 45 20, 35 30, 25 40" stroke="url(#neonGlowLogo)" strokeWidth="2.5" strokeOpacity="0.5" strokeLinecap="round" className="transition-all duration-500 group-hover:stroke-[#6200EA]"/>
-              
+              <path d="M 25 35 C 15 25, 5 15, 0 5 C 10 10, 20 20, 25 30" stroke="url(#neonGlowLogo)" strokeWidth="2.5" strokeLinecap="round" />
+              <path d="M 25 45 C 10 35, 0 25, -5 15 C 5 20, 15 30, 25 40" stroke="url(#neonGlowLogo)" strokeWidth="2.5" strokeOpacity="0.5" strokeLinecap="round" />
+              <path d="M 25 35 C 35 25, 45 15, 50 5 C 40 10, 30 20, 25 30" stroke="url(#neonGlowLogo)" strokeWidth="2.5" strokeLinecap="round" />
+              <path d="M 25 45 C 40 35, 50 25, 55 15 C 45 20, 35 30, 25 40" stroke="url(#neonGlowLogo)" strokeWidth="2.5" strokeOpacity="0.5" strokeLinecap="round" />
               <line x1="25" y1="20" x2="25" y2="45" stroke="url(#neonGlowLogo)" strokeWidth="2.5" strokeLinecap="round" />
-              <circle cx="25" cy="10" r="3" fill={isDark ? "#00E5FF" : "#40C4FF"} className="transition-transform duration-500 group-hover:scale-150" />
+              <circle cx="25" cy="10" r="3" fill={isDark ? "#00E5FF" : "#40C4FF"} />
             </g>
-
-            <text x="75" y="32" fontFamily="Inter, sans-serif" fontWeight="900" fontSize="22" letterSpacing="0.08em" className="fill-slate-900 dark:fill-white transition-colors duration-300">
+            <text x="75" y="32" fontFamily="Inter, sans-serif" fontWeight="900" fontSize="22" letterSpacing="0.08em" className="fill-slate-900 dark:fill-white">
               UNIVERSITY<tspan fill={isDark ? "#00E5FF" : "#40C4FF"}>.UZ</tspan>
-            </text>
-            <text x="77" y="48" fontFamily="Inter, sans-serif" fontWeight="600" fontSize="9" letterSpacing="0.25em" className="fill-slate-500 dark:fill-gray-400" textTransform="uppercase">
-              Premium Education Hub
             </text>
           </svg>
         </Link>
 
-        {/* Markaziy Navigatsiya Menyulari */}
-        <div
-          className="hidden md:flex flex-1 items-center justify-center gap-1 lg:gap-2 rounded-full border px-2 py-2 mx-4"
-          style={{
-            borderColor: 'var(--color-border)',
-            backgroundColor: 'var(--color-bg-elevated)',
-          }}
-        >
-          {navItems.map((item) => {
-            const isActive = location.pathname === item.href || location.pathname === item.match;
-
-            return (
+        {/* MARKAZIY NAVIGATSIYA: flex-1 orqali qolgan joyni egallaydi */}
+        <div className="hidden xl:flex flex-1 items-center justify-center gap-1 mx-2">
+          <div 
+            className="flex items-center gap-1 rounded-full border px-2 py-1.5"
+            style={{
+              borderColor: 'var(--color-border)',
+              backgroundColor: 'var(--color-bg-elevated)',
+            }}
+          >
+            {navItems.map((item) => (
               <Link
                 key={item.label}
                 to={item.href}
                 className={twMerge(
-                  'group relative overflow-hidden rounded-full px-4 py-2 text-sm font-medium transition-all duration-300',
-                  isActive ? 'text-[#38bdf8] bg-slate-100 dark:bg-white/5' : 'text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white'
+                  'relative rounded-full px-3 py-1.5 text-xs font-medium transition-all duration-300 whitespace-nowrap',
+                  location.pathname === item.href ? 'text-[#38bdf8] bg-slate-100 dark:bg-white/5' : 'text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white'
                 )}
               >
-                <span className="relative z-10 whitespace-nowrap">{item.label}</span>
-                <span 
-                  className={twMerge(
-                    "absolute bottom-0 left-1/2 h-[2px] w-0 -translate-x-1/2 bg-[#38bdf8] transition-all duration-300 ease-out group-hover:w-[70%] group-hover:shadow-[0_0_12px_2px_#38bdf8]",
-                    isActive && "w-[70%] shadow-[0_0_12px_2px_#38bdf8]"
-                  )}
-                />
+                {item.label}
               </Link>
-            );
-          })}
+            ))}
+          </div>
         </div>
 
-        {/* O'ng tomon action tugmalar */}
-        <div className="flex items-center justify-end gap-3 md:gap-5 min-w-max">
+        {/* O'NG TOMON CONTROLLARI: min-w-max bilan siqilmasligi ta'minlangan */}
+        <div className="flex items-center justify-end gap-2 sm:gap-3 min-w-max">
+          
+          {/* SOLISHTIRISH */}
           {compareList.length > 0 && (
             <Link
               to="/compare"
-              className="hidden lg:flex shrink-0 whitespace-nowrap items-center gap-2 rounded-full border border-[#38bdf8]/30 bg-[#38bdf8]/10 px-4 py-2 min-h-11 text-xs font-semibold text-[#38bdf8] transition-all hover:bg-[#38bdf8]/20"
+              className="hidden lg:flex shrink-0 items-center gap-2 rounded-full border border-[#38bdf8]/30 bg-[#38bdf8]/10 px-3 py-2 text-[10px] font-bold text-[#38bdf8] transition-all hover:bg-[#38bdf8]/20 whitespace-nowrap"
             >
-              <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
               {t.navbar.compare} ({compareList.length})
             </Link>
           )}
           
+          {/* TIL ALMASHTIRGICH */}
           <button
             type="button"
             onClick={toggleLanguage}
-            className="inline-flex shrink-0 mx-2 h-9 sm:h-11 items-center gap-1 sm:gap-2 rounded-full border px-2 sm:px-3 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.2em] transition duration-300 text-slate-900 dark:text-white"
+            className="flex shrink-0 h-9 items-center gap-1 rounded-full border px-3 text-[10px] font-bold uppercase transition duration-300 text-slate-900 dark:text-white"
             style={{
               borderColor: 'var(--color-border)',
               backgroundColor: 'var(--color-bg-elevated)',
             }}
-            aria-label={t.navbar.languageLabel}
           >
             <span className={language === 'uz' ? 'text-[#38bdf8]' : ''}>UZ</span>
-            <span className="text-[10px]" style={{ color: 'var(--color-text-muted)' }}>/</span>
+            <span className="opacity-30">/</span>
             <span className={language === 'ru' ? 'text-[#38bdf8]' : ''}>RU</span>
           </button>
 
+          {/* THEME TOGGLE */}
           <button
             type="button"
             onClick={toggleTheme}
-            className="relative shrink-0 inline-flex h-9 sm:h-11 w-12 sm:w-[5.5rem] items-center rounded-full border px-1 sm:px-1.5"
+            className="relative hidden sm:flex shrink-0 h-9 w-16 items-center rounded-full border px-1"
             style={{
               borderColor: 'var(--color-border)',
               backgroundColor: 'var(--color-bg-elevated)',
             }}
-            aria-label={t.navbar.themeLabel}
           >
             <motion.span
-              animate={{ x: theme === 'dark' ? 0 : (window.innerWidth < 640 ? 17 : 48) }}
-              transition={{ type: 'spring', stiffness: 280, damping: 24 }}
-              className="absolute left-[3px] sm:left-1.5 top-1.5 sm:top-1.5 h-[26px] sm:h-8 w-[26px] sm:w-8 rounded-full bg-[linear-gradient(135deg,#79F7FF_0%,#2764FF_100%)] shadow-[0_10px_30px_rgba(39,100,255,0.28)]"
+              animate={{ x: theme === 'dark' ? 0 : 28 }}
+              className="absolute left-1 h-7 w-7 rounded-full bg-[linear-gradient(135deg,#79F7FF_0%,#2764FF_100%)]"
             />
-            <span className="relative z-10 flex w-full items-center justify-between px-1 sm:px-1.5 text-[8px] sm:text-[10px] font-semibold uppercase tracking-[0.18em]">
+            <div className="relative z-10 flex w-full items-center justify-between px-2 text-[8px] font-bold">
               <span className={isDark ? 'text-slate-900' : 'text-slate-400'}>D</span>
               <span className={!isDark ? 'text-slate-900' : 'text-slate-400'}>L</span>
-            </span>
+            </div>
           </button>
 
+          {/* AUTH / PROFIL */}
           {user ? (
             <Link
               to="/profile"
-              className="hidden lg:inline-flex shrink-0 min-h-11 items-center gap-2 rounded-full border border-[#38bdf8]/35 bg-[#38bdf8]/10 px-4 text-sm font-semibold text-[#38bdf8] transition duration-300 hover:border-[#38bdf8]/70 hover:bg-[#38bdf8]/20 whitespace-nowrap"
+              className="flex shrink-0 h-9 items-center gap-2 rounded-full border border-[#38bdf8]/35 bg-[#38bdf8]/10 px-3 text-xs font-bold text-[#38bdf8] transition-all whitespace-nowrap"
             >
-              <div className="w-6 h-6 shrink-0 rounded-full bg-[#38bdf8] text-black flex items-center justify-center text-xs font-bold uppercase">
+              <div className="w-5 h-5 rounded-full bg-[#38bdf8] text-black flex items-center justify-center text-[10px] font-black">
                 {user.name?.charAt(0)}
               </div>
-              <span className="truncate max-w-[120px]">{user.name}</span>
+              <span className="hidden sm:inline truncate max-w-[80px]">{user.name}</span>
             </Link>
           ) : (
-            <div className="hidden lg:flex items-center gap-3 shrink-0">
-              <Link
-                to="/login"
-                className="min-h-11 flex items-center rounded-full px-4 text-sm font-medium transition duration-300 hover:text-[#38bdf8] text-slate-600 dark:text-gray-400 whitespace-nowrap"
-              >
+            <div className="flex items-center gap-2 shrink-0">
+              <Link to="/login" className="hidden sm:block text-[11px] font-bold px-2 text-slate-600 dark:text-gray-400 whitespace-nowrap">
                 {t.navbar.login}
               </Link>
               <Link
                 to="/register"
-                className="min-h-11 flex items-center rounded-full border border-[#7bf7ff]/35 bg-[#7bf7ff]/10 px-6 text-sm font-semibold text-[#0f172a] transition duration-300 hover:border-[#7bf7ff]/70 hover:bg-[#7bf7ff]/15 dark:text-white whitespace-nowrap"
+                className="h-9 flex items-center rounded-full border border-[#38bdf8]/30 bg-[#38bdf8]/10 px-4 text-[11px] font-bold text-[#38bdf8] transition-all whitespace-nowrap"
               >
                 {t.navbar.register}
               </Link>
