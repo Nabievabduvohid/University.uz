@@ -147,12 +147,12 @@ export default function Navbar() {
           {user ? (
             <Link
               to="/profile"
-              className="hidden lg:inline-flex min-h-11 items-center gap-2 rounded-full border border-[#38bdf8]/35 bg-[#38bdf8]/10 px-5 text-sm font-semibold text-[#38bdf8] transition duration-300 hover:border-[#38bdf8]/70 hover:bg-[#38bdf8]/20"
+              className="hidden lg:inline-flex shrink-0 min-h-11 items-center gap-2 rounded-full border border-[#38bdf8]/35 bg-[#38bdf8]/10 px-4 text-sm font-semibold text-[#38bdf8] transition duration-300 hover:border-[#38bdf8]/70 hover:bg-[#38bdf8]/20 whitespace-nowrap"
             >
-              <div className="w-6 h-6 rounded-full bg-[#38bdf8] text-black flex items-center justify-center text-xs font-bold uppercase">
+              <div className="w-6 h-6 shrink-0 rounded-full bg-[#38bdf8] text-black flex items-center justify-center text-xs font-bold uppercase">
                 {user.name?.charAt(0)}
               </div>
-              {user.name}
+              <span className="truncate max-w-[120px]">{user.name}</span>
             </Link>
           ) : (
             <div className="hidden lg:flex items-center gap-3 shrink-0">
