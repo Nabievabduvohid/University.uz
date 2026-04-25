@@ -155,7 +155,7 @@ export default function Navbar() {
               {user.name}
             </Link>
           ) : (
-            <div className="hidden lg:flex items-center gap-4 min-w-max">
+            <div className="hidden lg:flex items-center gap-3 shrink-0">
               <Link
                 to="/login"
                 className="min-h-11 flex items-center rounded-full px-4 text-sm font-medium transition duration-300 hover:text-[#38bdf8] text-slate-600 dark:text-gray-400 whitespace-nowrap"
@@ -164,7 +164,7 @@ export default function Navbar() {
               </Link>
               <Link
                 to="/register"
-                className="min-h-11 flex items-center rounded-full border border-[#7bf7ff]/35 bg-[#7bf7ff]/10 px-5 text-sm font-semibold text-[#0f172a] transition duration-300 hover:border-[#7bf7ff]/70 hover:bg-[#7bf7ff]/15 dark:text-white whitespace-nowrap"
+                className="min-h-11 flex items-center rounded-full border border-[#7bf7ff]/35 bg-[#7bf7ff]/10 px-6 text-sm font-semibold text-[#0f172a] transition duration-300 hover:border-[#7bf7ff]/70 hover:bg-[#7bf7ff]/15 dark:text-white whitespace-nowrap"
               >
                 {t.navbar.register}
               </Link>
