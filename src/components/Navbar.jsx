@@ -97,13 +97,13 @@ export default function Navbar() {
         </div>
 
         {/* O'ng tomon action tugmalar */}
-        <div className="flex shrink-0 items-center justify-end gap-1.5 sm:gap-2">
+        <div className="flex items-center justify-end gap-3 md:gap-5 min-w-max">
           {compareList.length > 0 && (
             <Link
               to="/compare"
-              className="hidden lg:flex items-center gap-2 rounded-full border border-[#38bdf8]/30 bg-[#38bdf8]/10 px-4 py-2 min-h-11 text-xs font-semibold text-[#38bdf8] transition-all hover:bg-[#38bdf8]/20 mr-1"
+              className="hidden lg:flex shrink-0 whitespace-nowrap items-center gap-2 rounded-full border border-[#38bdf8]/30 bg-[#38bdf8]/10 px-4 py-2 min-h-11 text-xs font-semibold text-[#38bdf8] transition-all hover:bg-[#38bdf8]/20"
             >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+              <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
               {t.navbar.compare} ({compareList.length})
             </Link>
           )}
@@ -111,7 +111,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={toggleLanguage}
-            className="inline-flex h-9 sm:h-11 items-center gap-1 sm:gap-2 rounded-full border px-2 sm:px-3 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.2em] transition duration-300 text-slate-900 dark:text-white"
+            className="inline-flex shrink-0 mx-2 h-9 sm:h-11 items-center gap-1 sm:gap-2 rounded-full border px-2 sm:px-3 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.2em] transition duration-300 text-slate-900 dark:text-white"
             style={{
               borderColor: 'var(--color-border)',
               backgroundColor: 'var(--color-bg-elevated)',
@@ -126,7 +126,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={toggleTheme}
-            className="relative inline-flex h-9 sm:h-11 w-12 sm:w-[5.5rem] items-center rounded-full border px-1 sm:px-1.5"
+            className="relative shrink-0 inline-flex h-9 sm:h-11 w-12 sm:w-[5.5rem] items-center rounded-full border px-1 sm:px-1.5"
             style={{
               borderColor: 'var(--color-border)',
               backgroundColor: 'var(--color-bg-elevated)',
