@@ -9,7 +9,7 @@ import universitiesData, { formatUzCurrency } from '../data/universities';
 import { useLanguage } from '../context/LanguageContext';
 
 export default function ComparePage() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const { compareList, removeFromCompare, clearCompare } = useCompare();
 
   const selectedUnis = compareList.map(id => universitiesData.find(u => u.id === id)).filter(Boolean);
@@ -65,10 +65,10 @@ export default function ComparePage() {
                 <div className="min-w-[800px] grid grid-cols-4 gap-6">
                   {/* Left Parameter Column */}
                   <div className="col-span-1 pt-48 flex flex-col gap-6 text-right pr-6 border-r border-white/10">
-                    <div className="h-16 flex items-center justify-end font-semibold text-gray-400 uppercase tracking-widest text-xs">{t.compare.contract}</div>
-                    <div className="h-24 flex items-center justify-end font-semibold text-gray-400 uppercase tracking-widest text-xs">{t.compare.rating}</div>
-                    <div className="h-24 flex items-center justify-end font-semibold text-gray-400 uppercase tracking-widest text-xs">{t.compare.faculties}</div>
-                    <div className="h-16 flex items-center justify-end font-semibold text-gray-400 uppercase tracking-widest text-xs">{t.compare.dormitory}</div>
+                    <div className="h-16 flex items-center justify-end font-semibold text-gray-400 uppercase tracking-widest text-xs">{t.compare.contract || "Kontrakt"}</div>
+                    <div className="h-24 flex items-center justify-end font-semibold text-gray-400 uppercase tracking-widest text-xs">{language === 'uz' ? "Kirish Fanlari" : "Вступительные предметы"}</div>
+                    <div className="h-24 flex items-center justify-end font-semibold text-gray-400 uppercase tracking-widest text-xs">{language === 'uz' ? "Xalqaro reyting" : "Международный рейтинг"}</div>
+                    <div className="h-16 flex items-center justify-end font-semibold text-gray-400 uppercase tracking-widest text-xs">{t.compare.dormitory || "Yotoqxona"}</div>
                   </div>
 
                   {/* University Columns */}
@@ -103,32 +103,35 @@ export default function ComparePage() {
                       <div className="h-16 items-center flex border-b border-white/10">
                         <div>
                           <div className="font-bold text-[#10b981] text-lg">{uni.tuitionFee}</div>
-                          <div className="text-xs text-gray-400">Oyiga: {formatUzCurrency(uni.contract_month)}</div>
+                          <div className="text-xs text-gray-400">{(language === 'uz' ? 'Oyiga' : 'В месяц')}: {formatUzCurrency(uni.contract_month)}</div>
                         </div>
                       </div>
 
-                      {/* Rating */}
+                      {/* Subjects */}
+                      <div className="h-24 items-center flex border-b border-white/10">
+                        <div className="flex flex-wrap gap-1.5">
+                          {((uni.subjects_uz && uni.subjects_ru) ? (language === 'uz' ? uni.subjects_uz : uni.subjects_ru) : []).map((subj, index) => (
+                            <span key={index} className="bg-blue-900/30 text-blue-300 px-2 py-1 rounded-md text-[10px] font-medium border border-blue-800/50">
+                              {subj}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* QS Ranking */}
                       <div className="h-24 items-center flex border-b border-white/10">
                         <div className="flex flex-col">
                           <div className="flex items-center gap-1">
                             <span className="text-yellow-400 text-xl font-bold">★ {uni.rating}</span>
-                            <span className="text-gray-500 text-sm">/10</span>
+                            <span className="text-gray-500 text-sm">/ 5</span>
                           </div>
-                          <span className="text-gray-400 text-sm mt-1">{uni.rating > 8.5 ? t.compare.international : t.compare.national}</span>
+                          <span className="text-gray-400 text-[11px] mt-1 uppercase tracking-wider font-semibold">QS World Ranking</span>
                         </div>
-                      </div>
-
-                      {/* Faculties */}
-                      <div className="h-24 items-center flex border-b border-white/10">
-                         <div className="flex flex-wrap gap-2">
-                           <span className="text-2xl font-bold text-white mr-2">{uni.faculties.length} {t.compare.itemsCount}</span>
-                           <span className="text-gray-400 text-sm leading-snug">{t.compare.mainDirection}</span>
-                         </div>
                       </div>
 
                       {/* Dormitory */}
                       <div className="h-16 items-center flex">
-                        <span className={`font-semibold ${checkDormitory(uni).includes('Bor') ? 'text-[#38bdf8]' : 'text-orange-400'}`}>
+                        <span className={`font-semibold text-sm ${checkDormitory(uni).includes('Bor') || checkDormitory(uni).includes('есть') || checkDormitory(uni).includes('Yes') ? 'text-[#38bdf8]' : 'text-orange-400'}`}>
                           {checkDormitory(uni)}
                         </span>
                       </div>

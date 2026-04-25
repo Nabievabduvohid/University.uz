@@ -1,27 +1,9 @@
-import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { twMerge } from 'tailwind-merge';
 import { useLanguage } from '../../context/LanguageContext';
 import { useTheme } from '../../context/ThemeContext';
+import { useCompare } from '../../context/CompareContext';
 import { formatUzCurrency } from '../../data/universities';
-
-const SAVED_UNIVERSITIES_KEY = 'university_saved_list';
-
-const readSavedUniversities = () => {
-  if (typeof window === 'undefined') return [];
-
-  try {
-    const stored = window.localStorage.getItem(SAVED_UNIVERSITIES_KEY);
-    const parsed = JSON.parse(stored ?? '[]');
-    return Array.isArray(parsed) ? parsed : [];
-  } catch {
-    return [];
-  }
-};
-
-const writeSavedUniversities = (items) => {
-  window.localStorage.setItem(SAVED_UNIVERSITIES_KEY, JSON.stringify(items));
-};
 
 const formatCompactMillions = (amount) => {
   if (typeof amount !== 'number') return null;
@@ -44,12 +26,9 @@ const UniversityCard = ({
 }) => {
   const { t, language } = useLanguage();
   const { isDark } = useTheme();
-  const [isSaved, setIsSaved] = useState(false);
+  const { isInCompare, addToCompare, removeFromCompare } = useCompare();
 
-  useEffect(() => {
-    if (!universityId) return;
-    setIsSaved(readSavedUniversities().includes(universityId));
-  }, [universityId]);
+  const isSaved = universityId ? isInCompare(universityId) : false;
 
   const toggleSaved = (event) => {
     event.preventDefault();
@@ -57,13 +36,11 @@ const UniversityCard = ({
 
     if (!universityId) return;
 
-    const savedItems = readSavedUniversities();
-    const nextItems = savedItems.includes(universityId)
-      ? savedItems.filter((item) => item !== universityId)
-      : [...savedItems, universityId];
-
-    writeSavedUniversities(nextItems);
-    setIsSaved(nextItems.includes(universityId));
+    if (isSaved) {
+      removeFromCompare(universityId);
+    } else {
+      addToCompare(universityId);
+    }
   };
 
   const yearlyContract = typeof contractYear === 'number' ? formatUzCurrency(contractYear) : null;
