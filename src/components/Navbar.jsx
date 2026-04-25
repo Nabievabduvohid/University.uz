@@ -155,7 +155,7 @@ export default function Navbar() {
               {user.name}
             </Link>
           ) : (
-            <div className="hidden lg:flex items-center gap-2">
+            <div className="hidden lg:flex items-center gap-4 min-w-max">
               <Link
                 to="/login"
                 className="min-h-11 flex items-center rounded-full px-4 text-sm font-medium transition duration-300 hover:text-[#38bdf8] text-slate-600 dark:text-gray-400 whitespace-nowrap"
